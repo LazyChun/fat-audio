@@ -1,0 +1,31 @@
+.panel {
+  width: 200px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--ams-border-default);
+  background: var(--ams-bg-secondary);
+  overflow: hidden;
+}
+
+.header {
+  height: 24px;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--ams-space-3);
+  font-family: var(--ams-font-mono);
+  font-size: var(--ams-text-xs);
+  font-weight: var(--ams-font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ams-text-tertiary);
+  border-bottom: 1px solid var(--ams-border-subtle);
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}

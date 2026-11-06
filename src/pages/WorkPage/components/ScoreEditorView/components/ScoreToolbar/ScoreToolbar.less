@@ -1,0 +1,62 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 34px;
+  padding: 0 var(--ams-space-3);
+  border-bottom: 1px solid var(--ams-border-default);
+  background: var(--ams-bg-primary);
+  flex-shrink: 0;
+}
+
+.group {
+  display: flex;
+  gap: 2px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 26px;
+  padding: 0 8px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--ams-bg-tertiary);
+  color: var(--ams-text-secondary);
+  font-size: var(--ams-text-xs);
+  cursor: pointer;
+  transition:
+    background var(--ams-transition-fast),
+    color var(--ams-transition-fast);
+}
+
+.btn:hover {
+  background: var(--ams-bg-hover);
+  color: var(--ams-text-primary);
+}
+
+.active {
+  background: var(--ams-brand-primary-muted);
+  color: var(--ams-brand-primary);
+  font-weight: var(--ams-weight-medium);
+}
+
+.label {
+  white-space: nowrap;
+}
+
+.octaveGroup {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+  padding-left: 8px;
+  border-left: 1px solid var(--ams-border-default);
+}
+
+.octaveLabel {
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-tertiary);
+  white-space: nowrap;
+}

@@ -1,0 +1,246 @@
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 var(--ams-space-3);
+  background: var(--ams-bg-primary);
+  border-bottom: 1px solid var(--ams-border-subtle);
+  font-family: var(--ams-font-body);
+  user-select: none;
+}
+
+.left,
+.center,
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--ams-space-2);
+}
+
+.left {
+  min-width: 0;
+  flex: 1;
+}
+
+.center {
+  flex: 0 0 auto;
+  justify-content: center;
+  gap: var(--ams-space-3);
+}
+
+.right {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-right: var(--ams-space-2);
+  color: var(--ams-brand-primary);
+}
+
+.logoText {
+  font-family: var(--ams-font-display);
+  font-size: var(--ams-text-md);
+  font-weight: var(--ams-weight-bold);
+  letter-spacing: var(--ams-tracking-tight);
+}
+
+.projectDropdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 200px;
+  height: 24px;
+  padding: 0 6px;
+  border: none;
+  background: transparent;
+  color: var(--ams-text-secondary);
+  font-size: var(--ams-text-sm);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--ams-transition-fast);
+
+  &:hover {
+    background: var(--ams-bg-hover);
+    color: var(--ams-text-primary);
+  }
+}
+
+.projectName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: var(--ams-weight-medium);
+  color: var(--ams-text-primary);
+}
+
+.dirtyDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--state-warning, #faad14);
+  flex-shrink: 0;
+}
+
+.dirtySave {
+  color: var(--state-warning, #faad14) !important;
+}
+
+.transportGroup,
+.toggleGroup,
+.zoomGroup {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--ams-text-secondary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    background var(--ams-transition-fast),
+    color var(--ams-transition-fast);
+
+  &:hover:not(:disabled) {
+    background: var(--ams-bg-hover);
+    color: var(--ams-text-primary);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.active {
+  background: var(--ams-brand-primary-muted);
+  color: var(--ams-brand-primary);
+}
+
+.playBtn {
+  width: 28px;
+  height: 28px;
+  background: var(--ams-brand-primary);
+  color: var(--ams-text-inverse);
+  border-radius: var(--radius-full);
+
+  &:hover:not(:disabled) {
+    background: var(--ams-brand-primary-hover);
+    color: var(--ams-text-inverse);
+  }
+}
+
+.divider {
+  width: 1px;
+  height: 18px;
+  background: var(--ams-border-default);
+}
+
+.infoGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--ams-space-3);
+  font-family: var(--ams-font-mono);
+}
+
+.timeDisplay {
+  font-size: var(--ams-text-sm);
+  color: var(--ams-text-primary);
+  letter-spacing: var(--ams-tracking-wide);
+  min-width: 92px;
+}
+
+.infoItem {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.infoLabel {
+  font-size: var(--ams-text-sm);
+  color: var(--ams-text-primary);
+  font-weight: var(--ams-weight-semibold);
+}
+
+.infoUnit {
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-tertiary);
+}
+
+.statusGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--ams-space-2);
+  font-family: var(--ams-font-mono);
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-tertiary);
+}
+
+.statusMetric {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.statusLabel {
+  color: var(--ams-text-tertiary);
+}
+
+.statusValue {
+  color: var(--ams-text-secondary);
+}
+
+.zoomGroup {
+  gap: 4px;
+  color: var(--ams-text-tertiary);
+}
+
+.zoomSlider {
+  width: 72px;
+  height: 4px;
+  accent-color: var(--ams-brand-primary);
+  cursor: pointer;
+}
+
+.zoomValue {
+  font-family: var(--ams-font-mono);
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-secondary);
+  min-width: 32px;
+}
+
+.projectItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 180px;
+}
+
+.projectItemName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+.newItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ams-brand-primary, #1677ff);
+}

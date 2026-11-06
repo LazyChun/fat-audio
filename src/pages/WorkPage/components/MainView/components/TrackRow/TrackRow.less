@@ -1,0 +1,91 @@
+.row {
+  position: relative;
+  height: 32px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  gap: var(--ams-space-2);
+  padding: 0 var(--ams-space-2) 0 var(--ams-space-3);
+  cursor: pointer;
+  border-bottom: 1px solid var(--ams-border-subtle);
+  transition: background var(--ams-transition-fast);
+
+  &:hover {
+    background: var(--ams-bg-hover);
+  }
+}
+
+.selected {
+  background: var(--ams-bg-active);
+}
+
+.muted {
+  opacity: 0.5;
+}
+
+.colorBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+}
+
+.name {
+  width: 52px;
+  min-width: 52px;
+  font-size: var(--ams-text-sm);
+  color: var(--ams-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.msBtn {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: var(--ams-font-weight-semibold);
+  border-radius: 2px;
+  border: 1px solid var(--ams-border-default);
+  background: var(--ams-bg-tertiary);
+  color: var(--ams-text-secondary);
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--ams-transition-fast);
+
+  &:hover {
+    color: var(--ams-text-primary);
+    border-color: var(--ams-border-strong);
+  }
+}
+
+.activeWarm {
+  background: var(--ams-accent-warm);
+  border-color: var(--ams-accent-warm);
+  color: var(--ams-text-inverse);
+}
+
+.activeBrand {
+  background: var(--ams-brand-primary);
+  border-color: var(--ams-brand-primary);
+  color: var(--ams-text-inverse);
+}
+
+.volume {
+  flex: 1;
+  min-width: 0;
+  height: 3px;
+  cursor: pointer;
+  appearance: auto;
+}
+
+.waveform {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}

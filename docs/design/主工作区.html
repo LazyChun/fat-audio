@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Music Studio — Main Workspace</title>
+    <style id="theme-vars">
+:root {
+  /* === Brand Prefix: ams (AI Music Studio) — Light Theme === */
+
+  /* === Color System === */
+  --ams-bg-deep: #f5f5f8;
+  --ams-bg-primary: #ffffff;
+  --ams-bg-secondary: #f0f0f4;
+  --ams-bg-tertiary: #e8e8ee;
+  --ams-bg-elevated: #ffffff;
+  --ams-bg-hover: #ececf2;
+  --ams-bg-active: #e2e2ea;
+
+  --ams-border-subtle: rgba(0, 0, 0, 0.06);
+  --ams-border-default: rgba(0, 0, 0, 0.1);
+  --ams-border-strong: rgba(0, 0, 0, 0.16);
+  --ams-border-focus: rgba(99, 102, 241, 0.5);
+
+  --ams-text-primary: #1a1a2e;
+  --ams-text-secondary: #5a5a72;
+  --ams-text-tertiary: #9a9ab0;
+  --ams-text-inverse: #ffffff;
+
+  --ams-brand-primary: #6366f1;
+  --ams-brand-primary-hover: #4f46e5;
+  --ams-brand-primary-muted: rgba(99, 102, 241, 0.08);
+  --ams-brand-primary-glow: rgba(99, 102, 241, 0.12);
+
+  --ams-accent-warm: #d97706;
+  --ams-accent-warm-muted: rgba(217, 119, 6, 0.08);
+
+  --ams-accent-cyan: #0891b2;
+  --ams-accent-cyan-muted: rgba(8, 145, 178, 0.08);
+
+  --ams-accent-rose: #e11d48;
+  --ams-accent-rose-muted: rgba(225, 29, 72, 0.08);
+
+  --ams-accent-emerald: #059669;
+  --ams-accent-emerald-muted: rgba(5, 150, 105, 0.08);
+
+  /* Semantic State Colors */
+  --state-success: #059669;
+  --state-warning: #d97706;
+  --state-error: #dc2626;
+  --state-info: #6366f1;
+
+  /* Piano Roll / Grid Colors */
+  --ams-grid-line: rgba(0, 0, 0, 0.04);
+  --ams-grid-beat: rgba(0, 0, 0, 0.07);
+  --ams-grid-measure: rgba(0, 0, 0, 0.12);
+  --ams-note-c: #6366f1;
+  --ams-note-d: #818cf8;
+  --ams-note-e: #0891b2;
+  --ams-note-f: #059669;
+  --ams-note-g: #d97706;
+  --ams-note-a: #e11d48;
+  --ams-note-b: #7c3aed;
+
+  /* Track Colors */
+  --ams-track-piano: #6366f1;
+  --ams-track-drums: #d97706;
+  --ams-track-guitar: #059669;
+  --ams-track-bass: #0891b2;
+  --ams-track-violin: #e11d48;
+  --ams-track-synth: #7c3aed;
+  --ams-track-vocals: #db2777;
+  --ams-track-strings: #ea580c;
+  --ams-track-winds: #0d9488;
+  --ams-track-organ: #6d28d9;
+
+  /* === Typography === */
+  --ams-font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --ams-font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --ams-font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  --ams-text-xs: 0.6875rem;
+  --ams-text-sm: 0.75rem;
+  --ams-text-base: 0.8125rem;
+  --ams-text-md: 0.875rem;
+  --ams-text-lg: 1rem;
+  --ams-text-xl: 1.125rem;
+  --ams-text-2xl: 1.25rem;
+  --ams-text-3xl: 1.5rem;
+
+  --ams-leading-tight: 1.25;
+  --ams-leading-normal: 1.5;
+  --ams-leading-relaxed: 1.625;
+
+  --ams-weight-normal: 400;
+  --ams-weight-medium: 500;
+  --ams-weight-semibold: 600;
+  --ams-weight-bold: 700;
+
+  --ams-tracking-tight: -0.01em;
+  --ams-tracking-normal: 0;
+  --ams-tracking-wide: 0.02em;
+
+  /* === Radius === */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* === Spacing === */
+  --ams-space-1: 4px;
+  --ams-space-2: 8px;
+  --ams-space-3: 12px;
+  --ams-space-4: 16px;
+  --ams-space-5: 20px;
+  --ams-space-6: 24px;
+  --ams-space-8: 32px;
+  --ams-space-10: 40px;
+  --ams-space-12: 48px;
+
+  /* === Shadow / Surface === */
+  --ams-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --ams-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --ams-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.05);
+  --ams-shadow-xl: 0 8px 32px rgba(0, 0, 0, 0.05);
+  --ams-glow-primary: 0 0 12px rgba(99, 102, 241, 0.15);
+  --ams-glow-warm: 0 0 12px rgba(217, 119, 6, 0.15);
+
+  /* === Z-index layers === */
+  --ams-z-sidebar: 100;
+  --ams-z-panel: 200;
+  --ams-z-modal: 300;
+  --ams-z-popover: 400;
+  --ams-z-tooltip: 500;
+
+  /* === Transitions === */
+  --ams-transition-fast: 100ms ease;
+  --ams-transition-normal: 200ms ease;
+  --ams-transition-slow: 350ms ease;
+
+  /* === Light mode base === */
+  --ams-theme-mode: light;
+}
+
+.ams-body {
+  font-family: var(--ams-font-body);
+  font-size: var(--ams-text-base);
+  line-height: var(--ams-leading-normal);
+  color: var(--ams-text-primary);
+  background-color: var(--ams-bg-deep);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ams-display {
+  font-family: var(--ams-font-display);
+  font-weight: var(--ams-weight-bold);
+  letter-spacing: var(--ams-tracking-tight);
+}
+
+.ams-mono {
+  font-family: var(--ams-font-mono);
+  letter-spacing: 0.02em;
+}
+
+.ams-h1 {
+  font-family: var(--ams-font-display);
+  font-size: var(--ams-text-3xl);
+  font-weight: var(--ams-weight-bold);
+  line-height: var(--ams-leading-tight);
+  letter-spacing: var(--ams-tracking-tight);
+  color: var(--ams-text-primary);
+}
+
+.ams-h2 {
+  font-family: var(--ams-font-display);
+  font-size: var(--ams-text-2xl);
+  font-weight: var(--ams-weight-semibold);
+  line-height: var(--ams-leading-tight);
+  color: var(--ams-text-primary);
+}
+
+.ams-h3 {
+  font-family: var(--ams-font-display);
+  font-size: var(--ams-text-xl);
+  font-weight: var(--ams-weight-semibold);
+  line-height: var(--ams-leading-tight);
+  color: var(--ams-text-primary);
+}
+
+.ams-body-lg {
+  font-family: var(--ams-font-body);
+  font-size: var(--ams-text-lg);
+  line-height: var(--ams-leading-normal);
+  color: var(--ams-text-primary);
+}
+
+.ams-body-md {
+  font-family: var(--ams-font-body);
+  font-size: var(--ams-text-md);
+  line-height: var(--ams-leading-normal);
+  color: var(--ams-text-secondary);
+}
+
+.ams-body-sm {
+  font-family: var(--ams-font-body);
+  font-size: var(--ams-text-sm);
+  line-height: var(--ams-leading-normal);
+  color: var(--ams-text-tertiary);
+}
+
+.ams-caption {
+  font-family: var(--ams-font-mono);
+  font-size: var(--ams-text-xs);
+  line-height: var(--ams-leading-normal);
+  color: var(--ams-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  
+  @layer base {
+    body { background: var(--ams-bg-primary); color: var(--ams-text-primary); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body style="margin:0; padding:0; overflow:hidden; background:var(--ams-bg-deep); font-family:var(--ams-font-body); font-size:var(--ams-text-base); color:var(--ams-text-primary); -webkit-font-smoothing:antialiased;">
+
+  <!-- ===== PROJECT SHELL (shared) ===== -->
+  <div id="ams-app-shell" style="display:grid; grid-template-columns:1fr; grid-template-rows:44px 1fr 28px; grid-template-areas:'transport' 'main' 'status'; width:100vw; height:100vh; overflow:hidden; background:var(--ams-bg-deep); font-family:var(--ams-font-body); font-size:var(--ams-text-base); color:var(--ams-text-primary); -webkit-font-smoothing:antialiased;">
+
+    
+
+    
+  <!-- ========== TOP TRANSPORT BAR (with integrated page nav) ========== -->
+  <header id="ams-transport" style="grid-area:transport; height:44px; background:var(--ams-bg-primary); border-bottom:1px solid var(--ams-border-default); display:flex; align-items:center; padding:0 var(--ams-space-3); gap:var(--ams-space-3);">
+
+    <!-- Left: Page Navigation Tabs -->
+    <nav style="display:flex; align-items:center; gap:0; margin-right:var(--ams-space-2);">
+
+      <!-- Logo -->
+      <div style="display:flex; align-items:center; gap:4px; margin-right:var(--ams-space-3);">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="AMS Logo">
+          <path d="M6 2v14a3 3 0 1 1-2-2.83V4.83A3 3 0 1 0 9 2V2" stroke="var(--ams-brand-primary)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="14" cy="5" r="2.5" stroke="var(--ams-brand-primary)" stroke-width="1.6"/>
+        </svg>
+        <span style="font-family:var(--ams-font-display); font-weight:700; font-size:var(--ams-text-sm); color:var(--ams-brand-primary); letter-spacing:0.04em;">AMS</span>
+      </div>
+
+      <!-- Nav: 主工作区 -->
+      <button class="ams-nav-btn" data-nav-key="workspace" data-label="主工作区" data-dom-id="nav-main-workspace" style="position:relative; height:32px; display:flex; align-items:center; gap:5px; padding:0 10px; border:none; border-radius:var(--radius-md); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); font-size:var(--ams-text-sm); font-family:var(--ams-font-body);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="if(!this.classList.contains('ams-nav-active'))this.style.background='transparent'">
+        <svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="5" height="5" rx="1"/><rect x="11" y="2" width="5" height="5" rx="1"/>
+          <rect x="2" y="11" width="14" height="5" rx="1"/>
+        </svg>
+        <span>主工作区</span>
+      </button>
+
+      <!-- Nav: AI 生成 -->
+      <button class="ams-nav-btn" data-nav-key="ai-generate" data-label="AI 生成" data-dom-id="nav-ai-generate" style="position:relative; height:32px; display:flex; align-items:center; gap:5px; padding:0 10px; border:none; border-radius:var(--radius-md); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); font-size:var(--ams-text-sm); font-family:var(--ams-font-body);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="if(!this.classList.contains('ams-nav-active'))this.style.background='transparent'">
+        <svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 2l1.8 4.2L15 8l-4.2 1.8L9 14l-1.8-4.2L3 8l4.2-1.8z"/>
+          <line x1="15" y1="15" x2="12" y2="12"/>
+        </svg>
+        <span>AI 生成</span>
+      </button>
+
+      <!-- Nav: 乐谱编辑 -->
+      <button class="ams-nav-btn" data-nav-key="score-editor" data-label="乐谱编辑" data-dom-id="nav-score-editor" style="position:relative; height:32px; display:flex; align-items:center; gap:5px; padding:0 10px; border:none; border-radius:var(--radius-md); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); font-size:var(--ams-text-sm); font-family:var(--ams-font-body);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="if(!this.classList.contains('ams-nav-active'))this.style.background='transparent'">
+        <svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="4" x2="3" y2="14"/><line x1="6" y1="4" x2="6" y2="14"/>
+          <line x1="9" y1="4" x2="9" y2="14"/><line x1="15" y1="4" x2="15" y2="14"/>
+          <ellipse cx="3" cy="13" rx="2" ry="1.2" fill="currentColor" stroke="none" opacity="0.7"/>
+          <ellipse cx="6" cy="11" rx="2" ry="1.2" fill="currentColor" stroke="none" opacity="0.7"/>
+          <ellipse cx="9" cy="9" rx="2" ry="1.2" fill="currentColor" stroke="none" opacity="0.7"/>
+          <line x1="2" y1="6" x2="16" y2="6" stroke-dasharray="2 2"/>
+          <line x1="2" y1="9" x2="16" y2="9" stroke-dasharray="2 2"/>
+          <line x1="2" y1="12" x2="16" y2="12" stroke-dasharray="2 2"/>
+        </svg>
+        <span>乐谱编辑</span>
+      </button>
+
+      <!-- Nav: 乐器音调 -->
+      <button class="ams-nav-btn" data-nav-key="instruments" data-label="乐器音调" data-dom-id="nav-instruments" style="position:relative; height:32px; display:flex; align-items:center; gap:5px; padding:0 10px; border:none; border-radius:var(--radius-md); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); font-size:var(--ams-text-sm); font-family:var(--ams-font-body);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="if(!this.classList.contains('ams-nav-active'))this.style.background='transparent'">
+        <svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="5" width="14" height="8" rx="1.5"/>
+          <line x1="5.5" y1="5" x2="5.5" y2="13"/><line x1="8" y1="5" x2="8" y2="13"/>
+          <line x1="10.5" y1="5" x2="10.5" y2="13"/><line x1="13" y1="5" x2="13" y2="13"/>
+          <line x1="2" y1="9" x2="16" y2="9"/>
+        </svg>
+        <span>乐器音调</span>
+      </button>
+    </nav>
+
+    <!-- Separator -->
+    <div style="width:1px; height:18px; background:var(--ams-border-default);"></div>
+
+    <!-- Transport Controls -->
+    <div style="display:flex; align-items:center; gap:2px;">
+      <!-- Rewind -->
+      <button style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)'" onmouseleave="this.style.background='transparent';this.style.color='var(--ams-text-secondary)'" title="回到开头">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M2 2v10h2V7l5 4V3L4 7V2z"/></svg>
+      </button>
+      <!-- Previous -->
+      <button style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)'" onmouseleave="this.style.background='transparent';this.style.color='var(--ams-text-secondary)'" title="上一标记">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 7l6-5v10z"/><rect x="1" y="2" width="2" height="10" rx="0.5"/></svg>
+      </button>
+      <!-- Play / Stop -->
+      <button id="ams-play-btn" style="width:30px; height:30px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-md); background:var(--ams-brand-primary-muted); color:var(--ams-brand-primary); cursor:pointer; transition:background var(--ams-transition-fast); margin:0 2px;"
+              onmouseenter="this.style.background='var(--ams-brand-primary-glow)'" onmouseleave="this.style.background='var(--ams-brand-primary-muted)'" title="播放/停止">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="4,2 14,8 4,14"/></svg>
+      </button>
+      <!-- Next -->
+      <button style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)'" onmouseleave="this.style.background='transparent';this.style.color='var(--ams-text-secondary)'" title="下一标记">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M11 7L5 2v10z"/><rect x="11" y="2" width="2" height="10" rx="0.5"/></svg>
+      </button>
+      <!-- Fast-forward -->
+      <button style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)'" onmouseleave="this.style.background='transparent';this.style.color='var(--ams-text-secondary)'" title="快进到结尾">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M12 2v10h-2V7L5 11V3l5 4V2z"/></svg>
+      </button>
+    </div>
+
+    <!-- Separator -->
+    <div style="width:1px; height:18px; background:var(--ams-border-default);"></div>
+
+    <!-- Time / BPM / Key / Time Sig -->
+    <div style="display:flex; align-items:center; gap:var(--ams-space-3);">
+      <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-sm); color:var(--ams-text-primary); background:var(--ams-bg-tertiary); padding:2px 8px; border-radius:var(--radius-sm); border:1px solid var(--ams-border-subtle); letter-spacing:0.04em;">00:00:00.000</span>
+      <div style="display:flex; align-items:center; gap:4px;">
+        <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); color:var(--ams-accent-warm); letter-spacing:0.03em;">120</span>
+        <span style="font-family:var(--ams-font-body); font-size:var(--ams-text-xs); color:var(--ams-text-tertiary);">BPM</span>
+      </div>
+      <span style="font-family:var(--ams-font-body); font-size:var(--ams-text-xs); color:var(--ams-text-secondary); background:var(--ams-bg-tertiary); padding:2px 6px; border-radius:var(--radius-sm); border:1px solid var(--ams-border-subtle);">C Maj</span>
+      <span style="font-family:var(--ams-font-body); font-size:var(--ams-text-xs); color:var(--ams-text-secondary); background:var(--ams-bg-tertiary); padding:2px 6px; border-radius:var(--radius-sm); border:1px solid var(--ams-border-subtle);">4/4</span>
+    </div>
+
+    <!-- Spacer -->
+    <div style="flex:1;"></div>
+
+    <!-- Right: Zoom / Snap / Undo-Redo / Metronome -->
+    <div style="display:flex; align-items:center; gap:var(--ams-space-2);">
+      <!-- Zoom -->
+      <div style="display:flex; align-items:center; gap:4px;">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--ams-text-tertiary)" stroke-width="1.3" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="12"/><line x1="2" y1="6" x2="12" y2="6"/><circle cx="6" cy="6" r="5"/></svg>
+        <input type="range" min="25" max="400" value="100" style="width:60px; height:4px; accent-color:var(--ams-brand-primary); cursor:pointer;" title="缩放">
+      </div>
+      <div style="width:1px; height:18px; background:var(--ams-border-default);"></div>
+      <!-- Snap -->
+      <button id="ams-snap-btn" style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:var(--ams-bg-tertiary); color:var(--ams-brand-primary); cursor:pointer; transition:background var(--ams-transition-fast);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='var(--ams-bg-tertiary)'" title="吸附网格">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+          <rect x="1.5" y="1.5" width="11" height="11" rx="1"/><line x1="5.5" y1="1.5" x2="5.5" y2="12.5"/><line x1="9.5" y1="1.5" x2="9.5" y2="12.5"/><line x1="1.5" y1="5.5" x2="12.5" y2="5.5"/><line x1="1.5" y1="9.5" x2="12.5" y2="9.5"/>
+        </svg>
+      </button>
+      <!-- Undo -->
+      <button style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)'" onmouseleave="this.style.background='transparent';this.style.color='var(--ams-text-secondary)'" title="撤销">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 7h6a3 3 0 1 0 0 6H6"/><polyline points="5 4 3 7 5 10"/>
+        </svg>
+      </button>
+      <!-- Redo -->
+      <button style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)'" onmouseleave="this.style.background='transparent';this.style.color='var(--ams-text-secondary)'" title="重做">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 7H5a3 3 0 1 1 0-6h3"/><polyline points="9 4 11 7 9 10"/>
+        </svg>
+      </button>
+      <div style="width:1px; height:18px; background:var(--ams-border-default);"></div>
+      <!-- Metronome -->
+      <button id="ams-metro-btn" style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="if(!this.classList.contains('ams-active'))this.style.background='transparent'" title="节拍器">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="7.5,1 13,12 2,12" fill="none"/>
+          <line x1="7.5" y1="5" x2="7.5" y2="9"/>
+          <line x1="5.5" y1="12" x2="9.5" y2="12"/>
+        </svg>
+      </button>
+
+    </div>
+  </header>
+
+    <!-- ========== MAIN CONTENT AREA (grid-area: main) ========== -->
+    <main style="grid-area:main; display:flex; overflow:hidden; background:var(--ams-bg-deep);">
+
+      <!-- ===== LEFT PANEL: Track List (~200px) ===== -->
+      <section id="ams-track-panel" style="width:200px; min-width:200px; background:var(--ams-bg-secondary); border-right:1px solid var(--ams-border-subtle); display:flex; flex-direction:column; overflow:hidden;" aria-label="轨道列表">
+
+        <!-- Track list header -->
+        <div style="height:24px; min-height:24px; background:var(--ams-bg-tertiary); border-bottom:1px solid var(--ams-border-subtle); display:flex; align-items:center; padding:0 var(--ams-space-3);">
+          <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); letter-spacing:0.05em; text-transform:uppercase;">Tracks</span>
+        </div>
+
+        <!-- Track list body -->
+        <div style="flex:1; overflow-y:auto; display:flex; flex-direction:column;">
+
+          <!-- Track 1: 钢琴 (Piano) -->
+          <div class="ams-track-row" style="display:flex; align-items:center; height:32px; min-height:32px; padding:0; border-bottom:1px solid var(--ams-border-subtle); position:relative; cursor:default;"
+               onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">
+            <div style="position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--ams-track-piano);"></div>
+            <div style="display:flex; align-items:center; width:100%; padding-left:var(--ams-space-3); gap:var(--ams-space-2);">
+              <span style="width:52px; font-size:var(--ams-text-xs); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">钢琴</span>
+              <button class="ams-mute-btn" style="width:18px; height:18px; font-size:9px; font-family:var(--ams-font-mono); font-weight:700; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-default); border-radius:2px; background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">M</button>
+              <button class="ams-solo-btn" style="width:18px; height:18px; font-size:9px; font-family:var(--ams-font-mono); font-weight:700; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-default); border-radius:2px; background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">S</button>
+              <input type="range" min="0" max="100" value="75" style="flex:1; height:3px; accent-color:var(--ams-track-piano); cursor:pointer;" title="音量">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--ams-text-tertiary)" stroke-width="1.2" stroke-linecap="round" style="flex-shrink:0;">
+                <polyline points="1,7 4,7 5,3 7,11 8,5 9,7 13,7"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Track 2: 鼓组 (Drums) -->
+          <div class="ams-track-row" style="display:flex; align-items:center; height:32px; min-height:32px; padding:0; border-bottom:1px solid var(--ams-border-subtle); position:relative; cursor:default;"
+               onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">
+            <div style="position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--ams-track-drums);"></div>
+            <div style="display:flex; align-items:center; width:100%; padding-left:var(--ams-space-3); gap:var(--ams-space-2);">
+              <span style="width:52px; font-size:var(--ams-text-xs); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">鼓组</span>
+              <button class="ams-mute-btn" style="width:18px; height:18px; font-size:9px; font-family:var(--ams-font-mono); font-weight:700; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-default); border-radius:2px; background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">M</button>
+              <button class="ams-solo-btn" style="width:18px; height:18px; font-size:9px; font-family:var(--ams-font-mono); font-weight:700; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-default); border-radius:2px; background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">S</button>
+              <input type="range" min="0" max="100" value="82" style="flex:1; height:3px; accent-color:var(--ams-track-drums); cursor:pointer;" title="音量">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--ams-text-tertiary)" stroke-width="1.2" stroke-linecap="round" style="flex-shrink:0;">
+                <polyline points="1,7 4,7 5,3 7,11 8,5 9,7 13,7"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Track 3: 吉他 (Guitar) -->
+          <div class="ams-track-row" style="display:flex; align-items:center; height:32px; min-height:32px; padding:0; border-bottom:1px solid var(--ams-border-subtle); position:relative; cursor:default;"
+               onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">
+            <div style="position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--ams-track-guitar);"></div>
+            <div style="display:flex; align-items:center; width:100%; padding-left:var(--ams-space-3); gap:var(--ams-space-2);">
+              <span style="width:52px; font-size:var(--ams-text-xs); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">吉他</span>
+              <button class="ams-mute-btn" style="width:18px; height:18px; font-size:9px; font-family:var(--ams-font-mono); font-weight:700; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-default); border-radius:2px; background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">M</button>
+              <button class="ams-solo-btn" style="width:18px; height:18px; font-size:9px; font-family:var(--ams-font-mono); font-weight:700; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-default); border-radius:2px; background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">S</button>
+              <input type="range" min="0" max="100" value="65" style="flex:1; height:3px; accent-color:var(--ams-track-guitar); cursor:pointer;" title="音量">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--ams-text-tertiary)" stroke-width="1.2" stroke-linecap="round" style="flex-shrink:0;">
+                <polyline points="1,7 4,7 5,3 7,11 8,5 9,7 13,7"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Track 4: 贝斯 (Bass) -->
+          <div class="ams-track-row" style="display:flex; align-items:center; height:32px; min-height:32px; padding:0; border-bottom:1px solid var(--ams-border-subtle); position:relative; cursor:default;"
+               onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">
+            <div style="position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--ams-track-bass);"></div>
+            <div style="display:flex; align-items:center; width:100%; padding-left:var(--ams-space-3); gap:var(--ams-space-2);">
+              <span style="width:52px; font-size:var(--ams-text-xs); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">贝斯</span>
+              <button class="ams-mute-btn" style="width:18px; height:18px; font-size:9px; font-family:var(--ams-font-mono); font-weight:700; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-default); border-radius:2px; background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">M</button>
+              <button class="ams-solo-btn" style="width:18px; height:18px; font-size:9px; font-family:var(--ams-font-mono); font-weight:700; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-default); border-radius:2px; background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">S</button>
+              <input type="range" min="0" max="100" value="70" style="flex:1; height:3px; accent-color:var(--ams-track-bass); cursor:pointer;" title="音量">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--ams-text-tertiary)" stroke-width="1.2" stroke-linecap="round" style="flex-shrink:0;">
+                <polyline points="1,7 4,7 5,3 7,11 8,5 9,7 13,7"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Track 5: 小提琴 (Violin) -->
+          <div class="ams-track-row" style="display:flex; align-items:center; height:32px; min-height:32px; padding:0; border-bottom:1px solid var(--ams-border-subtle); position:relative; cursor:default;"
+               onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">
+            <div style="position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--ams-track-violin);"></div>
+            <div style="display:flex; align-items:center; width:100%; padding-left:var(--ams-space-3); gap:var(--ams-space-2);">
+              <span style="width:52px; font-size:var(--ams-text-xs); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">小提琴</span>
+              <button class="ams-mute-btn" style="width:18px; height:18px; font-size:9px; font-family:var(--ams-font-mono); font-weight:700; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-default); border-radius:2px; background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">M</button>
+              <button class="ams-solo-btn" style="width:18px; height:18px; font-size:9px; font-family:var(--ams-font-mono); font-weight:700; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-default); border-radius:2px; background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">S</button>
+              <input type="range" min="0" max="100" value="60" style="flex:1; height:3px; accent-color:var(--ams-track-violin); cursor:pointer;" title="音量">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--ams-text-tertiary)" stroke-width="1.2" stroke-linecap="round" style="flex-shrink:0;">
+                <polyline points="1,7 4,7 5,3 7,11 8,5 9,7 13,7"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Track 6: 合成器 (Synth) -->
+          <div class="ams-track-row" style="display:flex; align-items:center; height:32px; min-height:32px; padding:0; border-bottom:1px solid var(--ams-border-subtle); position:relative; cursor:default;"
+               onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">
+            <div style="position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--ams-track-synth);"></div>
+            <div style="display:flex; align-items:center; width:100%; padding-left:var(--ams-space-3); gap:var(--ams-space-2);">
+              <span style="width:52px; font-size:var(--ams-text-xs); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">合成器</span>
+              <button class="ams-mute-btn" style="width:18px; height:18px; font-size:9px; font-family:var(--ams-font-mono); font-weight:700; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-default); border-radius:2px; background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">M</button>
+              <button class="ams-solo-btn" style="width:18px; height:18px; font-size:9px; font-family:var(--ams-font-mono); font-weight:700; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-default); border-radius:2px; background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">S</button>
+              <input type="range" min="0" max="100" value="55" style="flex:1; height:3px; accent-color:var(--ams-track-synth); cursor:pointer;" title="音量">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--ams-text-tertiary)" stroke-width="1.2" stroke-linecap="round" style="flex-shrink:0;">
+                <polyline points="1,7 4,7 5,3 7,11 8,5 9,7 13,7"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Track 7: 人声 (Vocals) -->
+          <div class="ams-track-row" style="display:flex; align-items:center; height:32px; min-height:32px; padding:0; border-bottom:1px solid var(--ams-border-subtle); position:relative; cursor:default;"
+               onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">
+            <div style="position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--ams-track-vocals);"></div>
+            <div style="display:flex; align-items:center; width:100%; padding-left:var(--ams-space-3); gap:var(--ams-space-2);">
+              <span style="width:52px; font-size:var(--ams-text-xs); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">人声</span>
+              <button class="ams-mute-btn" style="width:18px; height:18px; font-size:9px; font-family:var(--ams-font-mono); font-weight:700; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-default); border-radius:2px; background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">M</button>
+              <button class="ams-solo-btn" style="width:18px; height:18px; font-size:9px; font-family:var(--ams-font-mono); font-weight:700; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-default); border-radius:2px; background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">S</button>
+              <input type="range" min="0" max="100" value="80" style="flex:1; height:3px; accent-color:var(--ams-track-vocals); cursor:pointer;" title="音量">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--ams-text-tertiary)" stroke-width="1.2" stroke-linecap="round" style="flex-shrink:0;">
+                <polyline points="1,7 4,7 5,3 7,11 8,5 9,7 13,7"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Track 8: 弦乐 (Strings) -->
+          <div class="ams-track-row" style="display:flex; align-items:center; height:32px; min-height:32px; padding:0; border-bottom:1px solid var(--ams-border-subtle); position:relative; cursor:default;"
+               onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">
+            <div style="position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--ams-track-strings);"></div>
+            <div style="display:flex; align-items:center; width:100%; padding-left:var(--ams-space-3); gap:var(--ams-space-2);">
+              <span style="width:52px; font-size:var(--ams-text-xs); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">弦乐</span>
+              <button class="ams-mute-btn" style="width:18px; height:18px; font-size:9px; font-family:var(--ams-font-mono); font-weight:700; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-default); border-radius:2px; background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">M</button>
+              <button class="ams-solo-btn" style="width:18px; height:18px; font-size:9px; font-family:var(--ams-font-mono); font-weight:700; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-default); border-radius:2px; background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='transparent'">S</button>
+              <input type="range" min="0" max="100" value="68" style="flex:1; height:3px; accent-color:var(--ams-track-strings); cursor:pointer;" title="音量">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--ams-text-tertiary)" stroke-width="1.2" stroke-linecap="round" style="flex-shrink:0;">
+                <polyline points="1,7 4,7 5,3 7,11 8,5 9,7 13,7"/>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== CENTER: Piano Roll / Timeline Grid ===== -->
+      <section id="ams-piano-roll" class="ams-piano-roll" style="flex:1; display:flex; flex-direction:column; overflow:hidden; position:relative;">
+
+        <!-- Ruler bar -->
+        <div id="ams-ruler" style="height:24px; min-height:24px; background:var(--ams-bg-primary); border-bottom:1px solid var(--ams-border-subtle); display:flex; align-items:flex-end; padding:0 0 2px 48px; position:relative; overflow:hidden;">
+          <svg width="100%" height="22" preserveAspectRatio="none" style="position:absolute; top:0; left:48px; right:0;">
+            <line x1="0" y1="0" x2="100%" y2="0" stroke="var(--ams-grid-measure)" stroke-width="0.5"/>
+            <!-- Measure markers at 0%, 25%, 50%, 75%, 100% -->
+            <text x="0" y="14" fill="var(--ams-text-tertiary)" font-family="var(--ams-font-mono)" font-size="9">1</text>
+            <line x1="24" y1="0" x2="24" y2="22" stroke="var(--ams-grid-measure)" stroke-width="0.5"/>
+            <text x="24" y="14" fill="var(--ams-text-tertiary)" font-family="var(--ams-font-mono)" font-size="9" text-anchor="middle">2</text>
+            <line x1="48" y1="0" x2="48" y2="22" stroke="var(--ams-grid-measure)" stroke-width="0.5"/>
+            <text x="48" y="14" fill="var(--ams-text-tertiary)" font-family="var(--ams-font-mono)" font-size="9" text-anchor="middle">3</text>
+            <line x1="72" y1="0" x2="72" y2="22" stroke="var(--ams-grid-measure)" stroke-width="0.5"/>
+            <text x="72" y="14" fill="var(--ams-text-tertiary)" font-family="var(--ams-font-mono)" font-size="9" text-anchor="middle">4</text>
+            <!-- Beat subdivisions -->
+            <line x1="6" y1="12" x2="6" y2="22" stroke="var(--ams-grid-beat)" stroke-width="0.5"/>
+            <line x1="12" y1="12" x2="12" y2="22" stroke="var(--ams-grid-beat)" stroke-width="0.5"/>
+            <line x1="18" y1="12" x2="18" y2="22" stroke="var(--ams-grid-beat)" stroke-width="0.5"/>
+            <line x1="30" y1="12" x2="30" y2="22" stroke="var(--ams-grid-beat)" stroke-width="0.5"/>
+            <line x1="36" y1="12" x2="36" y2="22" stroke="var(--ams-grid-beat)" stroke-width="0.5"/>
+            <line x1="42" y1="12" x2="42" y2="22" stroke="var(--ams-grid-beat)" stroke-width="0.5"/>
+            <line x1="54" y1="12" x2="54" y2="22" stroke="var(--ams-grid-beat)" stroke-width="0.5"/>
+            <line x1="60" y1="12" x2="60" y2="22" stroke="var(--ams-grid-beat)" stroke-width="0.5"/>
+            <line x1="66" y1="12" x2="66" y2="22" stroke="var(--ams-grid-beat)" stroke-width="0.5"/>
+            <line x1="78" y1="12" x2="78" y2="22" stroke="var(--ams-grid-beat)" stroke-width="0.5"/>
+            <line x1="84" y1="12" x2="84" y2="22" stroke="var(--ams-grid-beat)" stroke-width="0.5"/>
+            <line x1="90" y1="12" x2="90" y2="22" stroke="var(--ams-grid-beat)" stroke-width="0.5"/>
+          </svg>
+        </div>
+
+        <!-- Piano Roll grid area with notes -->
+        <div id="ams-piano-roll-body" style="flex:1; display:flex; overflow:auto; position:relative;">
+          <!-- Piano key labels (left column) -->
+          <div id="ams-piano-keys" style="width:48px; min-width:48px; background:var(--ams-bg-secondary); border-right:1px solid var(--ams-border-subtle); display:flex; flex-direction:column; overflow-y:hidden;">
+            <!-- Notes: C6 down to C2, each 16px height, 49 semitones -->
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">C6</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary); background:var(--ams-bg-tertiary);">B5</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">A5</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary); background:var(--ams-bg-tertiary);">G#5</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">G5</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary); background:var(--ams-bg-tertiary);">F#5</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">F5</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">E5</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary); background:var(--ams-bg-tertiary);">D#5</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">D5</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary); background:var(--ams-bg-tertiary);">C#5</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-measure); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-primary);">C5</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">B4</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">A4</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary); background:var(--ams-bg-tertiary);">G#4</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">G4</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary); background:var(--ams-bg-tertiary);">F#4</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">F4</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">E4</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary); background:var(--ams-bg-tertiary);">D#4</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">D4</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary); background:var(--ams-bg-tertiary);">C#4</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-measure); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-primary);">C4</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">B3</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">A3</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary); background:var(--ams-bg-tertiary);">G#3</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">G3</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary); background:var(--ams-bg-tertiary);">F#3</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">F3</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">E3</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary); background:var(--ams-bg-tertiary);">D#3</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">D3</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary); background:var(--ams-bg-tertiary);">C#3</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-measure); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-primary);">C3</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">B2</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">A2</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary); background:var(--ams-bg-tertiary);">G#2</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">G2</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary); background:var(--ams-bg-tertiary);">F#2</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">F2</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">E2</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary); background:var(--ams-bg-tertiary);">D#2</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; border-bottom:1px solid var(--ams-grid-line); font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-tertiary);">D2</div>
+            <div class="ams-piano-key" style="height:16px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; font-family:var(--ams-font-mono); font-size:8px; color:var(--ams-text-primary);">C2</div>
+          </div>
+
+          <!-- Grid area with notes (SVG) -->
+          <div id="ams-grid-area" style="flex:1; position:relative; overflow:hidden;">
+            <svg width="100%" height="100%" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="ams-grid-svg">
+
+              <!-- Grid lines: horizontal (per semitone row) -->
+              <!-- C notes get measure-strength lines; sharp/flat notes get subtle bg -->
+              <defs>
+                <pattern id="ams-subdiv" width="6.25%" height="16px" patternUnits="userSpaceOnUse">
+                  <line x1="6.25%" y1="0" x2="6.25%" y2="16" stroke="var(--ams-grid-beat)" stroke-width="0.3"/>
+                  <line x1="3.125%" y1="0" x2="3.125%" y2="16" stroke="var(--ams-grid-line)" stroke-width="0.15"/>
+                </pattern>
+                <pattern id="ams-beat" width="25%" height="16px" patternUnits="userSpaceOnUse">
+                  <line x1="0" y1="0" x2="0" y2="16" stroke="var(--ams-grid-beat)" stroke-width="0.5"/>
+                  <line x1="25%" y1="0" x2="25%" y2="16" stroke="var(--ams-grid-beat)" stroke-width="0.5"/>
+                  <line x1="50%" y1="0" x2="50%" y2="16" stroke="var(--ams-grid-beat)" stroke-width="0.5"/>
+                  <line x1="75%" y1="0" x2="75%" y2="16" stroke="var(--ams-grid-beat)" stroke-width="0.5"/>
+                </pattern>
+                <pattern id="ams-measure" width="25%" height="784px" patternUnits="userSpaceOnUse">
+                  <line x1="0" y1="0" x2="0" y2="784" stroke="var(--ams-grid-measure)" stroke-width="0.8"/>
+                  <line x1="25%" y1="0" x2="25%" y2="784" stroke="var(--ams-grid-measure)" stroke-width="0.8"/>
+                  <line x1="50%" y1="0" x2="50%" y2="784" stroke="var(--ams-grid-measure)" stroke-width="0.8"/>
+                  <line x1="75%" y1="0" x2="75%" y2="784" stroke="var(--ams-grid-measure)" stroke-width="0.8"/>
+                </pattern>
+              </defs>
+
+              <!-- Background grid fill -->
+              <rect width="100%" height="100%" fill="var(--ams-bg-deep)"/>
+              <rect width="100%" height="100%" fill="url(#ams-subdiv)"/>
+              <rect width="100%" height="100%" fill="url(#ams-beat)"/>
+              <rect width="100%" height="100%" fill="url(#ams-measure)"/>
+
+              <!-- === NOTE BLOCKS === -->
+
+              <!-- Piano track notes (indigo) — chord progression in measures 1-2 -->
+              <rect x="0.5%" y="368px" width="5.5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="0.5%" y="352px" width="5.5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="0.5%" y="320px" width="5.5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="6.5%" y="368px" width="5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="6.5%" y="336px" width="5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="6.5%" y="304px" width="5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="12%" y="384px" width="5.5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="12%" y="336px" width="5.5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="12%" y="304px" width="5.5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="18%" y="368px" width="6%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="18%" y="336px" width="6%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="18%" y="320px" width="6%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+
+              <!-- Piano continues in measure 2 -->
+              <rect x="25.5%" y="352px" width="5.5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="25.5%" y="320px" width="5.5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="25.5%" y="288px" width="5.5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="31.5%" y="368px" width="5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="31.5%" y="336px" width="5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="31.5%" y="304px" width="5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="37%" y="384px" width="5.5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="37%" y="336px" width="5.5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="37%" y="288px" width="5.5%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="43%" y="368px" width="6%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="43%" y="320px" width="6%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+              <rect x="43%" y="304px" width="6%" height="16" rx="3" fill="var(--ams-track-piano)" opacity="0.85"/>
+
+              <!-- Drums track (amber) — rhythmic hits on grid beats -->
+              <rect x="0.5%" y="752px" width="2.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.8"/>
+              <rect x="0.5%" y="736px" width="2.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.8"/>
+              <rect x="6.5%" y="752px" width="2.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.8"/>
+              <rect x="6.5%" y="736px" width="2.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.8"/>
+              <rect x="12.5%" y="752px" width="2.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.8"/>
+              <rect x="12.5%" y="736px" width="2.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.8"/>
+              <rect x="18.5%" y="752px" width="2.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.8"/>
+              <rect x="18.5%" y="736px" width="2.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.8"/>
+              <!-- measure 2 -->
+              <rect x="25.5%" y="752px" width="2.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.8"/>
+              <rect x="25.5%" y="736px" width="2.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.8"/>
+              <rect x="31.5%" y="752px" width="2.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.8"/>
+              <rect x="31.5%" y="736px" width="2.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.8"/>
+              <rect x="37.5%" y="752px" width="2.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.8"/>
+              <rect x="37.5%" y="736px" width="2.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.8"/>
+              <rect x="43.5%" y="752px" width="2.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.8"/>
+              <rect x="43.5%" y="736px" width="2.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.8"/>
+              <!-- hi-hat pattern -->
+              <rect x="3.5%" y="720px" width="1.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.5"/>
+              <rect x="9.5%" y="720px" width="1.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.5"/>
+              <rect x="15.5%" y="720px" width="1.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.5"/>
+              <rect x="21.5%" y="720px" width="1.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.5"/>
+              <rect x="28.5%" y="720px" width="1.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.5"/>
+              <rect x="34.5%" y="720px" width="1.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.5"/>
+              <rect x="40.5%" y="720px" width="1.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.5"/>
+              <rect x="46.5%" y="720px" width="1.5%" height="16" rx="2" fill="var(--ams-track-drums)" opacity="0.5"/>
+
+              <!-- Guitar track (emerald) — strummed chords -->
+              <rect x="0.5%" y="496px" width="12%" height="16" rx="3" fill="var(--ams-track-guitar)" opacity="0.8"/>
+              <rect x="0.5%" y="480px" width="12%" height="16" rx="3" fill="var(--ams-track-guitar)" opacity="0.8"/>
+              <rect x="0.5%" y="464px" width="12%" height="16" rx="3" fill="var(--ams-track-guitar)" opacity="0.8"/>
+              <rect x="12.5%" y="496px" width="12%" height="16" rx="3" fill="var(--ams-track-guitar)" opacity="0.8"/>
+              <rect x="12.5%" y="480px" width="12%" height="16" rx="3" fill="var(--ams-track-guitar)" opacity="0.8"/>
+              <rect x="12.5%" y="464px" width="12%" height="16" rx="3" fill="var(--ams-track-guitar)" opacity="0.8"/>
+              <rect x="25.5%" y="480px" width="12%" height="16" rx="3" fill="var(--ams-track-guitar)" opacity="0.8"/>
+              <rect x="25.5%" y="464px" width="12%" height="16" rx="3" fill="var(--ams-track-guitar)" opacity="0.8"/>
+              <rect x="25.5%" y="432px" width="12%" height="16" rx="3" fill="var(--ams-track-guitar)" opacity="0.8"/>
+              <rect x="37.5%" y="496px" width="12%" height="16" rx="3" fill="var(--ams-track-guitar)" opacity="0.8"/>
+              <rect x="37.5%" y="480px" width="12%" height="16" rx="3" fill="var(--ams-track-guitar)" opacity="0.8"/>
+              <rect x="37.5%" y="448px" width="12%" height="16" rx="3" fill="var(--ams-track-guitar)" opacity="0.8"/>
+
+              <!-- Bass track (cyan) — bass line -->
+              <rect x="0.5%" y="688px" width="5.5%" height="16" rx="3" fill="var(--ams-track-bass)" opacity="0.85"/>
+              <rect x="6.5%" y="672px" width="5%" height="16" rx="3" fill="var(--ams-track-bass)" opacity="0.85"/>
+              <rect x="12%" y="688px" width="5.5%" height="16" rx="3" fill="var(--ams-track-bass)" opacity="0.85"/>
+              <rect x="18%" y="656px" width="6%" height="16" rx="3" fill="var(--ams-track-bass)" opacity="0.85"/>
+              <rect x="25.5%" y="672px" width="5.5%" height="16" rx="3" fill="var(--ams-track-bass)" opacity="0.85"/>
+              <rect x="31.5%" y="656px" width="5%" height="16" rx="3" fill="var(--ams-track-bass)" opacity="0.85"/>
+              <rect x="37%" y="672px" width="5.5%" height="16" rx="3" fill="var(--ams-track-bass)" opacity="0.85"/>
+              <rect x="43%" y="640px" width="6%" height="16" rx="3" fill="var(--ams-track-bass)" opacity="0.85"/>
+
+              <!-- Synth track (purple) — sustained pads -->
+              <rect x="0.5%" y="400px" width="24%" height="16" rx="3" fill="var(--ams-track-synth)" opacity="0.7"/>
+              <rect x="0.5%" y="384px" width="24%" height="16" rx="3" fill="var(--ams-track-synth)" opacity="0.7"/>
+              <rect x="25.5%" y="384px" width="24%" height="16" rx="3" fill="var(--ams-track-synth)" opacity="0.7"/>
+              <rect x="25.5%" y="368px" width="24%" height="16" rx="3" fill="var(--ams-track-synth)" opacity="0.7"/>
+              <rect x="50.5%" y="368px" width="24%" height="16" rx="3" fill="var(--ams-track-synth)" opacity="0.7"/>
+              <rect x="50.5%" y="352px" width="24%" height="16" rx="3" fill="var(--ams-track-synth)" opacity="0.7"/>
+              <rect x="75.5%" y="384px" width="24%" height="16" rx="3" fill="var(--ams-track-synth)" opacity="0.7"/>
+              <rect x="75.5%" y="336px" width="24%" height="16" rx="3" fill="var(--ams-track-synth)" opacity="0.7"/>
+
+              <!-- Vocal track (pink) — melodic phrases -->
+              <rect x="0.5%" y="240px" width="5.5%" height="16" rx="3" fill="var(--ams-track-vocals)" opacity="0.85"/>
+              <rect x="6.5%" y="256px" width="5%" height="16" rx="3" fill="var(--ams-track-vocals)" opacity="0.85"/>
+              <rect x="12%" y="272px" width="5.5%" height="16" rx="3" fill="var(--ams-track-vocals)" opacity="0.85"/>
+              <rect x="18%" y="256px" width="6%" height="16" rx="3" fill="var(--ams-track-vocals)" opacity="0.85"/>
+              <rect x="25.5%" y="240px" width="5.5%" height="16" rx="3" fill="var(--ams-track-vocals)" opacity="0.85"/>
+              <rect x="31.5%" y="256px" width="5%" height="16" rx="3" fill="var(--ams-track-vocals)" opacity="0.85"/>
+              <rect x="37%" y="272px" width="5.5%" height="16" rx="3" fill="var(--ams-track-vocals)" opacity="0.85"/>
+              <rect x="43%" y="240px" width="6%" height="16" rx="3" fill="var(--ams-track-vocals)" opacity="0.85"/>
+
+              <!-- Strings track (orange) — long sustained notes -->
+              <rect x="0.5%" y="544px" width="12%" height="16" rx="3" fill="var(--ams-track-strings)" opacity="0.75"/>
+              <rect x="0.5%" y="528px" width="12%" height="16" rx="3" fill="var(--ams-track-strings)" opacity="0.75"/>
+              <rect x="12.5%" y="560px" width="12%" height="16" rx="3" fill="var(--ams-track-strings)" opacity="0.75"/>
+              <rect x="12.5%" y="528px" width="12%" height="16" rx="3" fill="var(--ams-track-strings)" opacity="0.75"/>
+              <rect x="25.5%" y="544px" width="12%" height="16" rx="3" fill="var(--ams-track-strings)" opacity="0.75"/>
+              <rect x="25.5%" y="512px" width="12%" height="16" rx="3" fill="var(--ams-track-strings)" opacity="0.75"/>
+              <rect x="37.5%" y="560px" width="12%" height="16" rx="3" fill="var(--ams-track-strings)" opacity="0.75"/>
+              <rect x="37.5%" y="528px" width="12%" height="16" rx="3" fill="var(--ams-track-strings)" opacity="0.75"/>
+
+              <!-- Playback cursor (at beat 5 = 31.25% position, glowing indigo) -->
+              <line x1="31.25%" y1="0" x2="31.25%" y2="100%" stroke="var(--ams-brand-primary)" stroke-width="2" opacity="0.9"/>
+              <line x1="31.25%" y1="0" x2="31.25%" y2="100%" stroke="var(--ams-brand-primary)" stroke-width="6" opacity="0.15"/>
+              <!-- Cursor head triangle -->
+              <polygon points="31.25%,0 30.8%,0 31.7%,0" fill="var(--ams-brand-primary)"/>
+              <circle cx="31.25%" cy="0" r="4" fill="var(--ams-brand-primary)" opacity="0.9"/>
+
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== RIGHT PANEL: Mini Mixer (~220px) ===== -->
+      <section id="ams-mixer-panel" style="width:220px; min-width:220px; background:var(--ams-bg-secondary); border-left:1px solid var(--ams-border-subtle); display:flex; flex-direction:column; overflow:hidden;" aria-label="混音器">
+
+        <!-- Mixer header -->
+        <div style="height:24px; min-height:24px; background:var(--ams-bg-tertiary); border-bottom:1px solid var(--ams-border-subtle); display:flex; align-items:center; padding:0 var(--ams-space-3);">
+          <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); letter-spacing:0.05em; text-transform:uppercase;">Mixer</span>
+        </div>
+
+        <!-- Mixer strips -->
+        <div style="flex:1; display:flex; align-items:stretch; padding:var(--ams-space-2) var(--ams-space-1); gap:2px; overflow-x:hidden; overflow-y:hidden;">
+
+          <!-- Strip: 钢琴 -->
+          <div class="ams-mixer-strip" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 2px; background:var(--ams-bg-tertiary); border-radius:var(--radius-sm); border:1px solid var(--ams-border-subtle); min-width:0;">
+            <div style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-piano); flex-shrink:0;"></div>
+            <span style="font-size:8px; font-family:var(--ams-font-mono); color:var(--ams-text-tertiary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;">钢琴</span>
+            <!-- Pan knob indicator -->
+            <svg width="16" height="16" viewBox="0 0 16 16" style="flex-shrink:0;">
+              <circle cx="8" cy="8" r="6" fill="none" stroke="var(--ams-border-default)" stroke-width="1"/>
+              <line x1="8" y1="4" x2="8" y2="8" stroke="var(--ams-text-secondary)" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="8" cy="8" r="1.5" fill="var(--ams-text-secondary)"/>
+            </svg>
+            <!-- Volume fader (vertical) -->
+            <div style="width:4px; flex:1; background:var(--ams-bg-deep); border-radius:2px; position:relative; min-height:60px;">
+              <div style="position:absolute; bottom:25%; left:0; right:0; height:75%; background:var(--ams-track-piano); border-radius:2px; opacity:0.7;"></div>
+              <div style="position:absolute; bottom:calc(25% - 4px); left:-2px; right:-2px; height:8px; background:var(--ams-text-primary); border-radius:2px; box-shadow:var(--ams-shadow-sm);"></div>
+            </div>
+            <!-- Level meter -->
+            <div style="width:12px; height:40px; display:flex; gap:1px; flex-shrink:0;">
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:65%; background:var(--ams-track-piano); border-radius:1px; opacity:0.6;"></div>
+              </div>
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:55%; background:var(--ams-track-piano); border-radius:1px; opacity:0.6;"></div>
+              </div>
+            </div>
+            <span style="font-family:var(--ams-font-mono); font-size:7px; color:var(--ams-text-tertiary);">-4.2</span>
+          </div>
+
+          <!-- Strip: 鼓组 -->
+          <div class="ams-mixer-strip" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 2px; background:var(--ams-bg-tertiary); border-radius:var(--radius-sm); border:1px solid var(--ams-border-subtle); min-width:0;">
+            <div style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-drums); flex-shrink:0;"></div>
+            <span style="font-size:8px; font-family:var(--ams-font-mono); color:var(--ams-text-tertiary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;">鼓组</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" style="flex-shrink:0;">
+              <circle cx="8" cy="8" r="6" fill="none" stroke="var(--ams-border-default)" stroke-width="1"/>
+              <line x1="8" y1="4" x2="8" y2="8" stroke="var(--ams-text-secondary)" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="8" cy="8" r="1.5" fill="var(--ams-text-secondary)"/>
+            </svg>
+            <div style="width:4px; flex:1; background:var(--ams-bg-deep); border-radius:2px; position:relative; min-height:60px;">
+              <div style="position:absolute; bottom:18%; left:0; right:0; height:82%; background:var(--ams-track-drums); border-radius:2px; opacity:0.7;"></div>
+              <div style="position:absolute; bottom:calc(18% - 4px); left:-2px; right:-2px; height:8px; background:var(--ams-text-primary); border-radius:2px; box-shadow:var(--ams-shadow-sm);"></div>
+            </div>
+            <div style="width:12px; height:40px; display:flex; gap:1px; flex-shrink:0;">
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:80%; background:var(--ams-track-drums); border-radius:1px; opacity:0.6;"></div>
+              </div>
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:75%; background:var(--ams-track-drums); border-radius:1px; opacity:0.6;"></div>
+              </div>
+            </div>
+            <span style="font-family:var(--ams-font-mono); font-size:7px; color:var(--ams-text-tertiary);">-1.5</span>
+          </div>
+
+          <!-- Strip: 吉他 -->
+          <div class="ams-mixer-strip" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 2px; background:var(--ams-bg-tertiary); border-radius:var(--radius-sm); border:1px solid var(--ams-border-subtle); min-width:0;">
+            <div style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-guitar); flex-shrink:0;"></div>
+            <span style="font-size:8px; font-family:var(--ams-font-mono); color:var(--ams-text-tertiary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;">吉他</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" style="flex-shrink:0;">
+              <circle cx="8" cy="8" r="6" fill="none" stroke="var(--ams-border-default)" stroke-width="1"/>
+              <line x1="5" y1="5" x2="7.5" y2="7.5" stroke="var(--ams-text-secondary)" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="8" cy="8" r="1.5" fill="var(--ams-text-secondary)"/>
+            </svg>
+            <div style="width:4px; flex:1; background:var(--ams-bg-deep); border-radius:2px; position:relative; min-height:60px;">
+              <div style="position:absolute; bottom:35%; left:0; right:0; height:65%; background:var(--ams-track-guitar); border-radius:2px; opacity:0.7;"></div>
+              <div style="position:absolute; bottom:calc(35% - 4px); left:-2px; right:-2px; height:8px; background:var(--ams-text-primary); border-radius:2px; box-shadow:var(--ams-shadow-sm);"></div>
+            </div>
+            <div style="width:12px; height:40px; display:flex; gap:1px; flex-shrink:0;">
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:55%; background:var(--ams-track-guitar); border-radius:1px; opacity:0.6;"></div>
+              </div>
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:50%; background:var(--ams-track-guitar); border-radius:1px; opacity:0.6;"></div>
+              </div>
+            </div>
+            <span style="font-family:var(--ams-font-mono); font-size:7px; color:var(--ams-text-tertiary);">-6.8</span>
+          </div>
+
+          <!-- Strip: 贝斯 -->
+          <div class="ams-mixer-strip" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 2px; background:var(--ams-bg-tertiary); border-radius:var(--radius-sm); border:1px solid var(--ams-border-subtle); min-width:0;">
+            <div style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-bass); flex-shrink:0;"></div>
+            <span style="font-size:8px; font-family:var(--ams-font-mono); color:var(--ams-text-tertiary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;">贝斯</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" style="flex-shrink:0;">
+              <circle cx="8" cy="8" r="6" fill="none" stroke="var(--ams-border-default)" stroke-width="1"/>
+              <line x1="8" y1="4" x2="8" y2="8" stroke="var(--ams-text-secondary)" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="8" cy="8" r="1.5" fill="var(--ams-text-secondary)"/>
+            </svg>
+            <div style="width:4px; flex:1; background:var(--ams-bg-deep); border-radius:2px; position:relative; min-height:60px;">
+              <div style="position:absolute; bottom:30%; left:0; right:0; height:70%; background:var(--ams-track-bass); border-radius:2px; opacity="0.7;"></div>
+              <div style="position:absolute; bottom:calc(30% - 4px); left:-2px; right:-2px; height:8px; background:var(--ams-text-primary); border-radius:2px; box-shadow:var(--ams-shadow-sm);"></div>
+            </div>
+            <div style="width:12px; height:40px; display:flex; gap:1px; flex-shrink:0;">
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:62%; background:var(--ams-track-bass); border-radius:1px; opacity:0.6;"></div>
+              </div>
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:58%; background:var(--ams-track-bass); border-radius:1px; opacity:0.6;"></div>
+              </div>
+            </div>
+            <span style="font-family:var(--ams-font-mono); font-size:7px; color:var(--ams-text-tertiary);">-3.7</span>
+          </div>
+
+          <!-- Strip: 小提琴 -->
+          <div class="ams-mixer-strip" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 2px; background:var(--ams-bg-tertiary); border-radius:var(--radius-sm); border:1px solid var(--ams-border-subtle); min-width:0;">
+            <div style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-violin); flex-shrink:0;"></div>
+            <span style="font-size:8px; font-family:var(--ams-font-mono); color:var(--ams-text-tertiary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;">小提琴</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" style="flex-shrink:0;">
+              <circle cx="8" cy="8" r="6" fill="none" stroke="var(--ams-border-default)" stroke-width="1"/>
+              <line x1="11" y1="5" x2="8.5" y2="7.5" stroke="var(--ams-text-secondary)" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="8" cy="8" r="1.5" fill="var(--ams-text-secondary)"/>
+            </svg>
+            <div style="width:4px; flex:1; background:var(--ams-bg-deep); border-radius:2px; position:relative; min-height:60px;">
+              <div style="position:absolute; bottom:40%; left:0; right:0; height:60%; background:var(--ams-track-violin); border-radius:2px; opacity:0.7;"></div>
+              <div style="position:absolute; bottom:calc(40% - 4px); left:-2px; right:-2px; height:8px; background:var(--ams-text-primary); border-radius:2px; box-shadow:var(--ams-shadow-sm);"></div>
+            </div>
+            <div style="width:12px; height:40px; display:flex; gap:1px; flex-shrink:0;">
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:48%; background:var(--ams-track-violin); border-radius:1px; opacity="0.6;"></div>
+              </div>
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:42%; background:var(--ams-track-violin); border-radius:1px; opacity:0.6;"></div>
+              </div>
+            </div>
+            <span style="font-family:var(--ams-font-mono); font-size:7px; color:var(--ams-text-tertiary);">-8.1</span>
+          </div>
+
+          <!-- Strip: 合成器 -->
+          <div class="ams-mixer-strip" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 2px; background:var(--ams-bg-tertiary); border-radius:var(--radius-sm); border:1px solid var(--ams-border-subtle); min-width:0;">
+            <div style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-synth); flex-shrink:0;"></div>
+            <span style="font-size:8px; font-family:var(--ams-font-mono); color:var(--ams-text-tertiary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;">合成器</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" style="flex-shrink:0;">
+              <circle cx="8" cy="8" r="6" fill="none" stroke="var(--ams-border-default)" stroke-width="1"/>
+              <line x1="5" y1="6" x2="7.5" y2="7.5" stroke="var(--ams-text-secondary)" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="8" cy="8" r="1.5" fill="var(--ams-text-secondary)"/>
+            </svg>
+            <div style="width:4px; flex:1; background:var(--ams-bg-deep); border-radius:2px; position:relative; min-height:60px;">
+              <div style="position:absolute; bottom:45%; left:0; right:0; height:55%; background:var(--ams-track-synth); border-radius:2px; opacity="0.7;"></div>
+              <div style="position:absolute; bottom:calc(45% - 4px); left:-2px; right:-2px; height:8px; background:var(--ams-text-primary); border-radius:2px; box-shadow:var(--ams-shadow-sm);"></div>
+            </div>
+            <div style="width:12px; height:40px; display:flex; gap:1px; flex-shrink:0;">
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:45%; background:var(--ams-track-synth); border-radius:1px; opacity="0.6;"></div>
+              </div>
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:40%; background:var(--ams-track-synth); border-radius:1px; opacity:0.6;"></div>
+              </div>
+            </div>
+            <span style="font-family:var(--ams-font-mono); font-size:7px; color:var(--ams-text-tertiary);">-9.3</span>
+          </div>
+
+          <!-- Strip: 人声 -->
+          <div class="ams-mixer-strip" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 2px; background:var(--ams-bg-tertiary); border-radius:var(--radius-sm); border:1px solid var(--ams-border-subtle); min-width:0;">
+            <div style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-vocals); flex-shrink:0;"></div>
+            <span style="font-size:8px; font-family:var(--ams-font-mono); color:var(--ams-text-tertiary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;">人声</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" style="flex-shrink:0;">
+              <circle cx="8" cy="8" r="6" fill="none" stroke="var(--ams-border-default)" stroke-width="1"/>
+              <line x1="8" y1="4" x2="8" y2="8" stroke="var(--ams-text-secondary)" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="8" cy="8" r="1.5" fill="var(--ams-text-secondary)"/>
+            </svg>
+            <div style="width:4px; flex:1; background:var(--ams-bg-deep); border-radius:2px; position:relative; min-height:60px;">
+              <div style="position:absolute; bottom:20%; left:0; right:0; height:80%; background:var(--ams-track-vocals); border-radius:2px; opacity="0.7;"></div>
+              <div style="position:absolute; bottom:calc(20% - 4px); left:-2px; right:-2px; height:8px; background:var(--ams-text-primary); border-radius:2px; box-shadow:var(--ams-shadow-sm);"></div>
+            </div>
+            <div style="width:12px; height:40px; display:flex; gap:1px; flex-shrink:0;">
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:72%; background:var(--ams-track-vocals); border-radius:1px; opacity:0.6;"></div>
+              </div>
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:68%; background:var(--ams-track-vocals); border-radius:1px; opacity="0.6;"></div>
+              </div>
+            </div>
+            <span style="font-family:var(--ams-font-mono); font-size:7px; color:var(--ams-text-tertiary);">-2.1</span>
+          </div>
+
+          <!-- Strip: 弦乐 -->
+          <div class="ams-mixer-strip" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 2px; background:var(--ams-bg-tertiary); border-radius:var(--radius-sm); border:1px solid var(--ams-border-subtle); min-width:0;">
+            <div style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-strings); flex-shrink:0;"></div>
+            <span style="font-size:8px; font-family:var(--ams-font-mono); color:var(--ams-text-tertiary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;">弦乐</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" style="flex-shrink:0;">
+              <circle cx="8" cy="8" r="6" fill="none" stroke="var(--ams-border-default)" stroke-width="1"/>
+              <line x1="10" y1="4" x2="8.5" y2="7.5" stroke="var(--ams-text-secondary)" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="8" cy="8" r="1.5" fill="var(--ams-text-secondary)"/>
+            </svg>
+            <div style="width:4px; flex:1; background:var(--ams-bg-deep); border-radius:2px; position:relative; min-height:60px;">
+              <div style="position:absolute; bottom:32%; left:0; right:0; height:68%; background:var(--ams-track-strings); border-radius:2px; opacity="0.7;"></div>
+              <div style="position:absolute; bottom:calc(32% - 4px); left:-2px; right:-2px; height:8px; background:var(--ams-text-primary); border-radius:2px; box-shadow:var(--ams-shadow-sm);"></div>
+            </div>
+            <div style="width:12px; height:40px; display:flex; gap:1px; flex-shrink:0;">
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:60%; background:var(--ams-track-strings); border-radius:1px; opacity:0.6;"></div>
+              </div>
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:55%; background:var(--ams-track-strings); border-radius:1px; opacity:0.6;"></div>
+              </div>
+            </div>
+            <span style="font-family:var(--ams-font-mono); font-size:7px; color:var(--ams-text-tertiary);">-5.4</span>
+          </div>
+
+          <!-- Strip: Master -->
+          <div class="ams-mixer-strip" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 2px; background:var(--ams-bg-elevated); border-radius:var(--radius-sm); border:1px solid var(--ams-border-default); min-width:0;">
+            <div style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-text-primary); flex-shrink:0;"></div>
+            <span style="font-size:8px; font-family:var(--ams-font-mono); font-weight:700; color:var(--ams-text-secondary); white-space:nowrap;">MST</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" style="flex-shrink:0;">
+              <circle cx="8" cy="8" r="6" fill="none" stroke="var(--ams-border-default)" stroke-width="1"/>
+              <line x1="8" y1="4" x2="8" y2="8" stroke="var(--ams-text-secondary)" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="8" cy="8" r="1.5" fill="var(--ams-text-secondary)"/>
+            </svg>
+            <div style="width:4px; flex:1; background:var(--ams-bg-deep); border-radius:2px; position:relative; min-height:60px;">
+              <div style="position:absolute; bottom:15%; left:0; right:0; height:85%; background:var(--ams-brand-primary); border-radius:2px; opacity="0.8;"></div>
+              <div style="position:absolute; bottom:calc(15% - 4px); left:-2px; right:-2px; height:8px; background:var(--ams-text-primary); border-radius:2px; box-shadow:var(--ams-shadow-sm);"></div>
+            </div>
+            <div style="width:12px; height:40px; display:flex; gap:1px; flex-shrink:0;">
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:78%; background:var(--ams-brand-primary); border-radius:1px; opacity:0.7;"></div>
+              </div>
+              <div style="width:4px; height:100%; background:var(--ams-bg-deep); border-radius:1px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; right:0; height:73%; background:var(--ams-brand-primary); border-radius:1px; opacity:0.7;"></div>
+              </div>
+            </div>
+            <span style="font-family:var(--ams-font-mono); font-size:7px; color:var(--ams-brand-primary); font-weight:600;">-0.8</span>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ========== BOTTOM STATUS BAR ========== -->
+    <footer id="ams-status-bar" style="grid-area:status; height:28px; background:var(--ams-bg-primary); border-top:1px solid var(--ams-border-default); display:flex; align-items:center; justify-content:space-between; padding:0 var(--ams-space-3); font-size:var(--ams-text-xs); color:var(--ams-text-tertiary);">
+      <div style="display:flex; align-items:center; gap:6px;">
+        <span style="color:var(--ams-text-secondary);">未命名项目</span>
+        <span id="ams-modified" style="width:6px; height:6px; border-radius:var(--radius-full); background:var(--ams-accent-warm); opacity:1; transition:opacity var(--ams-transition-fast);" title="已修改"></span>
+      </div>
+      <div style="display:flex; align-items:center; gap:var(--ams-space-3);">
+        <div style="display:flex; align-items:center; gap:4px;">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="var(--ams-text-tertiary)"><rect x="1" y="6" width="2" height="3" rx="0.5"/><rect x="4" y="4" width="2" height="5" rx="0.5"/><rect x="7" y="2" width="2" height="7" rx="0.5"/></svg>
+          <span style="font-family:var(--ams-font-mono);">CPU <span id="ams-cpu">18</span>%</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:4px;">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="var(--ams-text-tertiary)" stroke-width="1"><rect x="1" y="2" width="8" height="6" rx="1"/><line x1="3" y1="4" x2="3" y2="6"/><line x1="5" y1="4" x2="5" y2="6"/><line x1="7" y1="4" x2="7" y2="6"/></svg>
+          <span style="font-family:var(--ams-font-mono);">MEM <span id="ams-mem">312</span>MB</span>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:var(--ams-space-3);">
+        <div style="display:flex; align-items:center; gap:4px;">
+          <span style="width:6px; height:6px; border-radius:var(--radius-full); background:var(--state-success);"></span>
+          <span style="font-family:var(--ams-font-mono);">WASAPI</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ===== Shell JS: Nav activation + tooltip behaviour ===== -->
+  <script>
+  (function() {
+    function setActiveNav(key) {
+      document.querySelectorAll('.ams-nav-btn').forEach(function(btn) {
+        btn.classList.remove('ams-nav-active');
+        btn.style.background = 'transparent';
+        btn.style.color = 'var(--ams-text-tertiary)';
+      });
+      var target = document.querySelector('.ams-nav-btn[data-nav-key="' + key + '"]');
+      if (target) {
+        target.classList.add('ams-nav-active');
+        target.style.background = 'var(--ams-brand-primary-muted)';
+        target.style.color = 'var(--ams-brand-primary)';
+      }
+    }
+    document.querySelectorAll('.ams-nav-btn').forEach(function(btn) {
+      var tip = btn.querySelector('.ams-nav-tip');
+      if (!tip) return;
+      btn.addEventListener('mouseenter', function() { tip.style.opacity = '1'; });
+      btn.addEventListener('mouseleave', function() { tip.style.opacity = '0'; });
+    });
+    document.querySelectorAll('.ams-nav-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var key = btn.getAttribute('data-nav-key');
+        if (key) setActiveNav(key);
+      });
+    });
+    window.amsSetActiveNav = setActiveNav;
+
+    /* Initialize workspace as active */
+    setActiveNav('workspace');
+  })();
+  </script>
+
+  <!-- Lucide init (if used) -->
+  <script>lucide.createIcons();</script>
+
+</body>
+</html>

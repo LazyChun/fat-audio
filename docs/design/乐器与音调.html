@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐器音调 - AI Music Studio</title>
+    <style id="theme-vars">
+:root {
+  /* === Brand Prefix: ams (AI Music Studio) — Light Theme === */
+
+  /* === Color System === */
+  --ams-bg-deep: #f5f5f8;
+  --ams-bg-primary: #ffffff;
+  --ams-bg-secondary: #f0f0f4;
+  --ams-bg-tertiary: #e8e8ee;
+  --ams-bg-elevated: #ffffff;
+  --ams-bg-hover: #ececf2;
+  --ams-bg-active: #e2e2ea;
+
+  --ams-border-subtle: rgba(0, 0, 0, 0.06);
+  --ams-border-default: rgba(0, 0, 0, 0.1);
+  --ams-border-strong: rgba(0, 0, 0, 0.16);
+  --ams-border-focus: rgba(99, 102, 241, 0.5);
+
+  --ams-text-primary: #1a1a2e;
+  --ams-text-secondary: #5a5a72;
+  --ams-text-tertiary: #9a9ab0;
+  --ams-text-inverse: #ffffff;
+
+  --ams-brand-primary: #6366f1;
+  --ams-brand-primary-hover: #4f46e5;
+  --ams-brand-primary-muted: rgba(99, 102, 241, 0.08);
+  --ams-brand-primary-glow: rgba(99, 102, 241, 0.12);
+
+  --ams-accent-warm: #d97706;
+  --ams-accent-warm-muted: rgba(217, 119, 6, 0.08);
+
+  --ams-accent-cyan: #0891b2;
+  --ams-accent-cyan-muted: rgba(8, 145, 178, 0.08);
+
+  --ams-accent-rose: #e11d48;
+  --ams-accent-rose-muted: rgba(225, 29, 72, 0.08);
+
+  --ams-accent-emerald: #059669;
+  --ams-accent-emerald-muted: rgba(5, 150, 105, 0.08);
+
+  /* Semantic State Colors */
+  --state-success: #059669;
+  --state-warning: #d97706;
+  --state-error: #dc2626;
+  --state-info: #6366f1;
+
+  /* Piano Roll / Grid Colors */
+  --ams-grid-line: rgba(0, 0, 0, 0.04);
+  --ams-grid-beat: rgba(0, 0, 0, 0.07);
+  --ams-grid-measure: rgba(0, 0, 0, 0.12);
+  --ams-note-c: #6366f1;
+  --ams-note-d: #818cf8;
+  --ams-note-e: #0891b2;
+  --ams-note-f: #059669;
+  --ams-note-g: #d97706;
+  --ams-note-a: #e11d48;
+  --ams-note-b: #7c3aed;
+
+  /* Track Colors */
+  --ams-track-piano: #6366f1;
+  --ams-track-drums: #d97706;
+  --ams-track-guitar: #059669;
+  --ams-track-bass: #0891b2;
+  --ams-track-violin: #e11d48;
+  --ams-track-synth: #7c3aed;
+  --ams-track-vocals: #db2777;
+  --ams-track-strings: #ea580c;
+  --ams-track-winds: #0d9488;
+  --ams-track-organ: #6d28d9;
+
+  /* === Typography === */
+  --ams-font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --ams-font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --ams-font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  --ams-text-xs: 0.6875rem;
+  --ams-text-sm: 0.75rem;
+  --ams-text-base: 0.8125rem;
+  --ams-text-md: 0.875rem;
+  --ams-text-lg: 1rem;
+  --ams-text-xl: 1.125rem;
+  --ams-text-2xl: 1.25rem;
+  --ams-text-3xl: 1.5rem;
+
+  --ams-leading-tight: 1.25;
+  --ams-leading-normal: 1.5;
+  --ams-leading-relaxed: 1.625;
+
+  --ams-weight-normal: 400;
+  --ams-weight-medium: 500;
+  --ams-weight-semibold: 600;
+  --ams-weight-bold: 700;
+
+  --ams-tracking-tight: -0.01em;
+  --ams-tracking-normal: 0;
+  --ams-tracking-wide: 0.02em;
+
+  /* === Radius === */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* === Spacing === */
+  --ams-space-1: 4px;
+  --ams-space-2: 8px;
+  --ams-space-3: 12px;
+  --ams-space-4: 16px;
+  --ams-space-5: 20px;
+  --ams-space-6: 24px;
+  --ams-space-8: 32px;
+  --ams-space-10: 40px;
+  --ams-space-12: 48px;
+
+  /* === Shadow / Surface === */
+  --ams-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --ams-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --ams-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.05);
+  --ams-shadow-xl: 0 8px 32px rgba(0, 0, 0, 0.05);
+  --ams-glow-primary: 0 0 12px rgba(99, 102, 241, 0.15);
+  --ams-glow-warm: 0 0 12px rgba(217, 119, 6, 0.15);
+
+  /* === Z-index layers === */
+  --ams-z-sidebar: 100;
+  --ams-z-panel: 200;
+  --ams-z-modal: 300;
+  --ams-z-popover: 400;
+  --ams-z-tooltip: 500;
+
+  /* === Transitions === */
+  --ams-transition-fast: 100ms ease;
+  --ams-transition-normal: 200ms ease;
+  --ams-transition-slow: 350ms ease;
+
+  /* === Light mode base === */
+  --ams-theme-mode: light;
+}
+
+.ams-body {
+  font-family: var(--ams-font-body);
+  font-size: var(--ams-text-base);
+  line-height: var(--ams-leading-normal);
+  color: var(--ams-text-primary);
+  background-color: var(--ams-bg-deep);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ams-display {
+  font-family: var(--ams-font-display);
+  font-weight: var(--ams-weight-bold);
+  letter-spacing: var(--ams-tracking-tight);
+}
+
+.ams-mono {
+  font-family: var(--ams-font-mono);
+  letter-spacing: 0.02em;
+}
+
+.ams-h1 {
+  font-family: var(--ams-font-display);
+  font-size: var(--ams-text-3xl);
+  font-weight: var(--ams-weight-bold);
+  line-height: var(--ams-leading-tight);
+  letter-spacing: var(--ams-tracking-tight);
+  color: var(--ams-text-primary);
+}
+
+.ams-h2 {
+  font-family: var(--ams-font-display);
+  font-size: var(--ams-text-2xl);
+  font-weight: var(--ams-weight-semibold);
+  line-height: var(--ams-leading-tight);
+  color: var(--ams-text-primary);
+}
+
+.ams-h3 {
+  font-family: var(--ams-font-display);
+  font-size: var(--ams-text-xl);
+  font-weight: var(--ams-weight-semibold);
+  line-height: var(--ams-leading-tight);
+  color: var(--ams-text-primary);
+}
+
+.ams-body-lg {
+  font-family: var(--ams-font-body);
+  font-size: var(--ams-text-lg);
+  line-height: var(--ams-leading-normal);
+  color: var(--ams-text-primary);
+}
+
+.ams-body-md {
+  font-family: var(--ams-font-body);
+  font-size: var(--ams-text-md);
+  line-height: var(--ams-leading-normal);
+  color: var(--ams-text-secondary);
+}
+
+.ams-body-sm {
+  font-family: var(--ams-font-body);
+  font-size: var(--ams-text-sm);
+  line-height: var(--ams-leading-normal);
+  color: var(--ams-text-tertiary);
+}
+
+.ams-caption {
+  font-family: var(--ams-font-mono);
+  font-size: var(--ams-text-xs);
+  line-height: var(--ams-leading-normal);
+  color: var(--ams-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  
+  @layer base {
+    body { background: var(--ams-bg-primary); color: var(--ams-text-primary); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+
+<!-- ============================================================
+     AI Music Studio — Shared Project Shell Fragment
+     ============================================================ -->
+
+<div id="ams-app-shell" style="display:grid; grid-template-columns:1fr; grid-template-rows:44px 1fr 28px; grid-template-areas:'transport' 'main' 'status'; width:100vw; height:100vh; overflow:hidden; background:var(--ams-bg-deep); font-family:var(--ams-font-body); font-size:var(--ams-text-base); color:var(--ams-text-primary); -webkit-font-smoothing:antialiased;">
+
+  
+
+  
+  <!-- ========== TOP TRANSPORT BAR (with integrated page nav) ========== -->
+  <header id="ams-transport" style="grid-area:transport; height:44px; background:var(--ams-bg-primary); border-bottom:1px solid var(--ams-border-default); display:flex; align-items:center; padding:0 var(--ams-space-3); gap:var(--ams-space-3);">
+
+    <!-- Left: Page Navigation Tabs -->
+    <nav style="display:flex; align-items:center; gap:0; margin-right:var(--ams-space-2);">
+
+      <!-- Logo -->
+      <div style="display:flex; align-items:center; gap:4px; margin-right:var(--ams-space-3);">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="AMS Logo">
+          <path d="M6 2v14a3 3 0 1 1-2-2.83V4.83A3 3 0 1 0 9 2V2" stroke="var(--ams-brand-primary)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="14" cy="5" r="2.5" stroke="var(--ams-brand-primary)" stroke-width="1.6"/>
+        </svg>
+        <span style="font-family:var(--ams-font-display); font-weight:700; font-size:var(--ams-text-sm); color:var(--ams-brand-primary); letter-spacing:0.04em;">AMS</span>
+      </div>
+
+      <!-- Nav: 主工作区 -->
+      <button class="ams-nav-btn" data-nav-key="workspace" data-label="主工作区" data-dom-id="nav-main-workspace" style="position:relative; height:32px; display:flex; align-items:center; gap:5px; padding:0 10px; border:none; border-radius:var(--radius-md); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); font-size:var(--ams-text-sm); font-family:var(--ams-font-body);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="if(!this.classList.contains('ams-nav-active'))this.style.background='transparent'">
+        <svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="5" height="5" rx="1"/><rect x="11" y="2" width="5" height="5" rx="1"/>
+          <rect x="2" y="11" width="14" height="5" rx="1"/>
+        </svg>
+        <span>主工作区</span>
+      </button>
+
+      <!-- Nav: AI 生成 -->
+      <button class="ams-nav-btn" data-nav-key="ai-generate" data-label="AI 生成" data-dom-id="nav-ai-generate" style="position:relative; height:32px; display:flex; align-items:center; gap:5px; padding:0 10px; border:none; border-radius:var(--radius-md); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); font-size:var(--ams-text-sm); font-family:var(--ams-font-body);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="if(!this.classList.contains('ams-nav-active'))this.style.background='transparent'">
+        <svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 2l1.8 4.2L15 8l-4.2 1.8L9 14l-1.8-4.2L3 8l4.2-1.8z"/>
+          <line x1="15" y1="15" x2="12" y2="12"/>
+        </svg>
+        <span>AI 生成</span>
+      </button>
+
+      <!-- Nav: 乐谱编辑 -->
+      <button class="ams-nav-btn" data-nav-key="score-editor" data-label="乐谱编辑" data-dom-id="nav-score-editor" style="position:relative; height:32px; display:flex; align-items:center; gap:5px; padding:0 10px; border:none; border-radius:var(--radius-md); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); font-size:var(--ams-text-sm); font-family:var(--ams-font-body);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="if(!this.classList.contains('ams-nav-active'))this.style.background='transparent'">
+        <svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="4" x2="3" y2="14"/><line x1="6" y1="4" x2="6" y2="14"/>
+          <line x1="9" y1="4" x2="9" y2="14"/><line x1="15" y1="4" x2="15" y2="14"/>
+          <ellipse cx="3" cy="13" rx="2" ry="1.2" fill="currentColor" stroke="none" opacity="0.7"/>
+          <ellipse cx="6" cy="11" rx="2" ry="1.2" fill="currentColor" stroke="none" opacity="0.7"/>
+          <ellipse cx="9" cy="9" rx="2" ry="1.2" fill="currentColor" stroke="none" opacity="0.7"/>
+          <line x1="2" y1="6" x2="16" y2="6" stroke-dasharray="2 2"/>
+          <line x1="2" y1="9" x2="16" y2="9" stroke-dasharray="2 2"/>
+          <line x1="2" y1="12" x2="16" y2="12" stroke-dasharray="2 2"/>
+        </svg>
+        <span>乐谱编辑</span>
+      </button>
+
+      <!-- Nav: 乐器音调 -->
+      <button class="ams-nav-btn" data-nav-key="instruments" data-label="乐器音调" data-dom-id="nav-instruments" style="position:relative; height:32px; display:flex; align-items:center; gap:5px; padding:0 10px; border:none; border-radius:var(--radius-md); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); font-size:var(--ams-text-sm); font-family:var(--ams-font-body);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="if(!this.classList.contains('ams-nav-active'))this.style.background='transparent'">
+        <svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="5" width="14" height="8" rx="1.5"/>
+          <line x1="5.5" y1="5" x2="5.5" y2="13"/><line x1="8" y1="5" x2="8" y2="13"/>
+          <line x1="10.5" y1="5" x2="10.5" y2="13"/><line x1="13" y1="5" x2="13" y2="13"/>
+          <line x1="2" y1="9" x2="16" y2="9"/>
+        </svg>
+        <span>乐器音调</span>
+      </button>
+    </nav>
+
+    <!-- Separator -->
+    <div style="width:1px; height:18px; background:var(--ams-border-default);"></div>
+
+    <!-- Transport Controls -->
+    <div style="display:flex; align-items:center; gap:2px;">
+      <!-- Rewind -->
+      <button style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)'" onmouseleave="this.style.background='transparent';this.style.color='var(--ams-text-secondary)'" title="回到开头">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M2 2v10h2V7l5 4V3L4 7V2z"/></svg>
+      </button>
+      <!-- Previous -->
+      <button style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)'" onmouseleave="this.style.background='transparent';this.style.color='var(--ams-text-secondary)'" title="上一标记">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3 7l6-5v10z"/><rect x="1" y="2" width="2" height="10" rx="0.5"/></svg>
+      </button>
+      <!-- Play / Stop -->
+      <button id="ams-play-btn" style="width:30px; height:30px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-md); background:var(--ams-brand-primary-muted); color:var(--ams-brand-primary); cursor:pointer; transition:background var(--ams-transition-fast); margin:0 2px;"
+              onmouseenter="this.style.background='var(--ams-brand-primary-glow)'" onmouseleave="this.style.background='var(--ams-brand-primary-muted)'" title="播放/停止">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><polygon points="4,2 14,8 4,14"/></svg>
+      </button>
+      <!-- Next -->
+      <button style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)'" onmouseleave="this.style.background='transparent';this.style.color='var(--ams-text-secondary)'" title="下一标记">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M11 7L5 2v10z"/><rect x="11" y="2" width="2" height="10" rx="0.5"/></svg>
+      </button>
+      <!-- Fast-forward -->
+      <button style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)'" onmouseleave="this.style.background='transparent';this.style.color='var(--ams-text-secondary)'" title="快进到结尾">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M12 2v10h-2V7L5 11V3l5 4V2z"/></svg>
+      </button>
+    </div>
+
+    <!-- Separator -->
+    <div style="width:1px; height:18px; background:var(--ams-border-default);"></div>
+
+    <!-- Time / BPM / Key / Time Sig -->
+    <div style="display:flex; align-items:center; gap:var(--ams-space-3);">
+      <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-sm); color:var(--ams-text-primary); background:var(--ams-bg-tertiary); padding:2px 8px; border-radius:var(--radius-sm); border:1px solid var(--ams-border-subtle); letter-spacing:0.04em;">00:00:00.000</span>
+      <div style="display:flex; align-items:center; gap:4px;">
+        <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); color:var(--ams-accent-warm); letter-spacing:0.03em;">120</span>
+        <span style="font-family:var(--ams-font-body); font-size:var(--ams-text-xs); color:var(--ams-text-tertiary);">BPM</span>
+      </div>
+      <span style="font-family:var(--ams-font-body); font-size:var(--ams-text-xs); color:var(--ams-text-secondary); background:var(--ams-bg-tertiary); padding:2px 6px; border-radius:var(--radius-sm); border:1px solid var(--ams-border-subtle);">C Maj</span>
+      <span style="font-family:var(--ams-font-body); font-size:var(--ams-text-xs); color:var(--ams-text-secondary); background:var(--ams-bg-tertiary); padding:2px 6px; border-radius:var(--radius-sm); border:1px solid var(--ams-border-subtle);">4/4</span>
+    </div>
+
+    <!-- Spacer -->
+    <div style="flex:1;"></div>
+
+    <!-- Right: Zoom / Snap / Undo-Redo / Metronome -->
+    <div style="display:flex; align-items:center; gap:var(--ams-space-2);">
+      <!-- Zoom -->
+      <div style="display:flex; align-items:center; gap:4px;">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--ams-text-tertiary)" stroke-width="1.3" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="12"/><line x1="2" y1="6" x2="12" y2="6"/><circle cx="6" cy="6" r="5"/></svg>
+        <input type="range" min="25" max="400" value="100" style="width:60px; height:4px; accent-color:var(--ams-brand-primary); cursor:pointer;" title="缩放">
+      </div>
+      <div style="width:1px; height:18px; background:var(--ams-border-default);"></div>
+      <!-- Snap -->
+      <button id="ams-snap-btn" style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:var(--ams-bg-tertiary); color:var(--ams-brand-primary); cursor:pointer; transition:background var(--ams-transition-fast);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="this.style.background='var(--ams-bg-tertiary)'" title="吸附网格">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+          <rect x="1.5" y="1.5" width="11" height="11" rx="1"/><line x1="5.5" y1="1.5" x2="5.5" y2="12.5"/><line x1="9.5" y1="1.5" x2="9.5" y2="12.5"/><line x1="1.5" y1="5.5" x2="12.5" y2="5.5"/><line x1="1.5" y1="9.5" x2="12.5" y2="9.5"/>
+        </svg>
+      </button>
+      <!-- Undo -->
+      <button style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)'" onmouseleave="this.style.background='transparent';this.style.color='var(--ams-text-secondary)'" title="撤销">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 7h6a3 3 0 1 0 0 6H6"/><polyline points="5 4 3 7 5 10"/>
+        </svg>
+      </button>
+      <!-- Redo -->
+      <button style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)'" onmouseleave="this.style.background='transparent';this.style.color='var(--ams-text-secondary)'" title="重做">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 7H5a3 3 0 1 1 0-6h3"/><polyline points="9 4 11 7 9 10"/>
+        </svg>
+      </button>
+      <div style="width:1px; height:18px; background:var(--ams-border-default);"></div>
+      <!-- Metronome -->
+      <button id="ams-metro-btn" style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast);"
+              onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="if(!this.classList.contains('ams-active'))this.style.background='transparent'" title="节拍器">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="7.5,1 13,12 2,12" fill="none"/>
+          <line x1="7.5" y1="5" x2="7.5" y2="9"/>
+          <line x1="5.5" y1="12" x2="9.5" y2="12"/>
+        </svg>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ========== MAIN CONTENT: Instrument Panel ========== -->
+  <main style="grid-area:main; overflow:auto; display:flex; background:var(--ams-bg-primary);">
+
+    <!-- ===== LEFT PANEL: Instrument Library (~200px) ===== -->
+    <section style="width:220px; min-width:220px; height:100%; border-right:1px solid var(--ams-border-default); display:flex; flex-direction:column; background:var(--ams-bg-primary);">
+
+      <!-- Category Tabs -->
+      <div style="padding:var(--ams-space-3) var(--ams-space-3) 0; display:flex; flex-wrap:wrap; gap:4px;">
+        <button class="ams-cat-tab ams-cat-active" style="padding:3px 8px; font-size:var(--ams-text-xs); border:1px solid var(--ams-border-subtle); border-radius:var(--radius-sm); background:var(--ams-brand-primary-muted); color:var(--ams-brand-primary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap; font-family:var(--ams-font-body);"
+                onclick="this.parentElement.querySelectorAll('.ams-cat-tab').forEach(function(t){t.classList.remove('ams-cat-active');t.style.background='transparent';t.style.color='var(--ams-text-secondary)';t.style.borderColor='var(--ams-border-subtle)'});this.classList.add('ams-cat-active');this.style.background='var(--ams-brand-primary-muted)';this.style.color='var(--ams-brand-primary)';this.style.borderColor='var(--ams-brand-primary)';">全部</button>
+        <button class="ams-cat-tab" style="padding:3px 8px; font-size:var(--ams-text-xs); border:1px solid var(--ams-border-subtle); border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap; font-family:var(--ams-font-body);"
+                onclick="this.parentElement.querySelectorAll('.ams-cat-tab').forEach(function(t){t.classList.remove('ams-cat-active');t.style.background='transparent';t.style.color='var(--ams-text-secondary)';t.style.borderColor='var(--ams-border-subtle)'});this.classList.add('ams-cat-active');this.style.background='var(--ams-brand-primary-muted)';this.style.color='var(--ams-brand-primary)';this.style.borderColor='var(--ams-brand-primary)';">键盘</button>
+        <button class="ams-cat-tab" style="padding:3px 8px; font-size:var(--ams-text-xs); border:1px solid var(--ams-border-subtle); border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap; font-family:var(--ams-font-body);"
+                onclick="this.parentElement.querySelectorAll('.ams-cat-tab').forEach(function(t){t.classList.remove('ams-cat-active');t.style.background='transparent';t.style.color='var(--ams-text-secondary)';t.style.borderColor='var(--ams-border-subtle)'});this.classList.add('ams-cat-active');this.style.background='var(--ams-brand-primary-muted)';this.style.color='var(--ams-brand-primary)';this.style.borderColor='var(--ams-brand-primary)';">弦乐</button>
+        <button class="ams-cat-tab" style="padding:3px 8px; font-size:var(--ams-text-xs); border:1px solid var(--ams-border-subtle); border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap; font-family:var(--ams-font-body);"
+                onclick="this.parentElement.querySelectorAll('.ams-cat-tab').forEach(function(t){t.classList.remove('ams-cat-active');t.style.background='transparent';t.style.color='var(--ams-text-secondary)';t.style.borderColor='var(--ams-border-subtle)'});this.classList.add('ams-cat-active');this.style.background='var(--ams-brand-primary-muted)';this.style.color='var(--ams-brand-primary)';this.style.borderColor='var(--ams-brand-primary)';">管乐</button>
+        <button class="ams-cat-tab" style="padding:3px 8px; font-size:var(--ams-text-xs); border:1px solid var(--ams-border-subtle); border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap; font-family:var(--ams-font-body);"
+                onclick="this.parentElement.querySelectorAll('.ams-cat-tab').forEach(function(t){t.classList.remove('ams-cat-active');t.style.background='transparent';t.style.color='var(--ams-text-secondary)';t.style.borderColor='var(--ams-border-subtle)'});this.classList.add('ams-cat-active');this.style.background='var(--ams-brand-primary-muted)';this.style.color='var(--ams-brand-primary)';this.style.borderColor='var(--ams-brand-primary)';">打击</button>
+        <button class="ams-cat-tab" style="padding:3px 8px; font-size:var(--ams-text-xs); border:1px solid var(--ams-border-subtle); border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap; font-family:var(--ams-font-body);"
+                onclick="this.parentElement.querySelectorAll('.ams-cat-tab').forEach(function(t){t.classList.remove('ams-cat-active');t.style.background='transparent';t.style.color='var(--ams-text-secondary)';t.style.borderColor='var(--ams-border-subtle)'});this.classList.add('ams-cat-active');this.style.background='var(--ams-brand-primary-muted)';this.style.color='var(--ams-brand-primary)';this.style.borderColor='var(--ams-brand-primary)';">人声</button>
+        <button class="ams-cat-tab" style="padding:3px 8px; font-size:var(--ams-text-xs); border:1px solid var(--ams-border-subtle); border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap; font-family:var(--ams-font-body);"
+                onclick="this.parentElement.querySelectorAll('.ams-cat-tab').forEach(function(t){t.classList.remove('ams-cat-active');t.style.background='transparent';t.style.color='var(--ams-text-secondary)';t.style.borderColor='var(--ams-border-subtle)'});this.classList.add('ams-cat-active');this.style.background='var(--ams-brand-primary-muted)';this.style.color='var(--ams-brand-primary)';this.style.borderColor='var(--ams-brand-primary)';">电子</button>
+      </div>
+
+      <!-- Instrument List (scrollable) -->
+      <div style="flex:1; overflow-y:auto; padding:var(--ams-space-2) var(--ams-space-3); display:flex; flex-direction:column; gap:4px;">
+
+        <!-- Piano (selected) -->
+        <div class="ams-inst-item ams-inst-selected" style="display:flex; align-items:center; gap:var(--ams-space-2); padding:6px 8px; border-radius:var(--radius-md); border:1px solid var(--ams-border-subtle); border-left:3px solid var(--ams-brand-primary); background:var(--ams-brand-primary-muted); cursor:pointer; transition:background var(--ams-transition-fast);"
+             onclick="selectInstrument(this)">
+          <span style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-piano); flex-shrink:0;"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:var(--ams-text-sm); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">钢琴</div>
+            <div style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); white-space:nowrap;">键盘</div>
+          </div>
+          <button style="width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; flex-shrink:0; transition:color var(--ams-transition-fast);"
+                  onmouseenter="this.style.color='var(--ams-brand-primary)'" onmouseleave="this.style.color='var(--ams-text-tertiary)'" title="添加到轨道">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+        </div>
+
+        <!-- E. Piano -->
+        <div class="ams-inst-item" style="display:flex; align-items:center; gap:var(--ams-space-2); padding:6px 8px; border-radius:var(--radius-md); border:1px solid var(--ams-border-subtle); background:var(--ams-bg-secondary); cursor:pointer; transition:background var(--ams-transition-fast);"
+             onclick="selectInstrument(this)">
+          <span style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-piano); flex-shrink:0; opacity:0.6;"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:var(--ams-text-sm); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">电钢琴</div>
+            <div style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); white-space:nowrap;">键盘</div>
+          </div>
+          <button style="width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; flex-shrink:0; transition:color var(--ams-transition-fast);"
+                  onmouseenter="this.style.color='var(--ams-brand-primary)'" onmouseleave="this.style.color='var(--ams-text-tertiary)'" title="添加到轨道">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+        </div>
+
+        <!-- Organ -->
+        <div class="ams-inst-item" style="display:flex; align-items:center; gap:var(--ams-space-2); padding:6px 8px; border-radius:var(--radius-md); border:1px solid var(--ams-border-subtle); background:var(--ams-bg-secondary); cursor:pointer; transition:background var(--ams-transition-fast);"
+             onclick="selectInstrument(this)">
+          <span style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-organ); flex-shrink:0; opacity:0.6;"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:var(--ams-text-sm); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">管风琴</div>
+            <div style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); white-space:nowrap;">键盘</div>
+          </div>
+          <button style="width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; flex-shrink:0; transition:color var(--ams-transition-fast);"
+                  onmouseenter="this.style.color='var(--ams-brand-primary)'" onmouseleave="this.style.color='var(--ams-text-tertiary)'" title="添加到轨道">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+        </div>
+
+        <!-- Synth Pad -->
+        <div class="ams-inst-item" style="display:flex; align-items:center; gap:var(--ams-space-2); padding:6px 8px; border-radius:var(--radius-md); border:1px solid var(--ams-border-subtle); background:var(--ams-bg-secondary); cursor:pointer; transition:background var(--ams-transition-fast);"
+             onclick="selectInstrument(this)">
+          <span style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-synth); flex-shrink:0; opacity:0.6;"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:var(--ams-text-sm); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">合成器</div>
+            <div style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); white-space:nowrap;">电子</div>
+          </div>
+          <button style="width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; flex-shrink:0; transition:color var(--ams-transition-fast);"
+                  onmouseenter="this.style.color='var(--ams-brand-primary)'" onmouseleave="this.style.color='var(--ams-text-tertiary)'" title="添加到轨道">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+        </div>
+
+        <!-- Acoustic Guitar -->
+        <div class="ams-inst-item" style="display:flex; align-items:center; gap:var(--ams-space-2); padding:6px 8px; border-radius:var(--radius-md); border:1px solid var(--ams-border-subtle); background:var(--ams-bg-secondary); cursor:pointer; transition:background var(--ams-transition-fast);"
+             onclick="selectInstrument(this)">
+          <span style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-guitar); flex-shrink:0; opacity:0.6;"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:var(--ams-text-sm); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">吉他</div>
+            <div style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); white-space:nowrap;">弦乐</div>
+          </div>
+          <button style="width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; flex-shrink:0; transition:color var(--ams-transition-fast);"
+                  onmouseenter="this.style.color='var(--ams-brand-primary)'" onmouseleave="this.style.color='var(--ams-text-tertiary)'" title="添加到轨道">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+        </div>
+
+        <!-- E. Guitar -->
+        <div class="ams-inst-item" style="display:flex; align-items:center; gap:var(--ams-space-2); padding:6px 8px; border-radius:var(--radius-md); border:1px solid var(--ams-border-subtle); background:var(--ams-bg-secondary); cursor:pointer; transition:background var(--ams-transition-fast);"
+             onclick="selectInstrument(this)">
+          <span style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-guitar); flex-shrink:0; opacity:0.6;"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:var(--ams-text-sm); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">电吉他</div>
+            <div style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); white-space:nowrap;">弦乐</div>
+          </div>
+          <button style="width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; flex-shrink:0; transition:color var(--ams-transition-fast);"
+                  onmouseenter="this.style.color='var(--ams-brand-primary)'" onmouseleave="this.style.color='var(--ams-text-tertiary)'" title="添加到轨道">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+        </div>
+
+        <!-- Bass -->
+        <div class="ams-inst-item" style="display:flex; align-items:center; gap:var(--ams-space-2); padding:6px 8px; border-radius:var(--radius-md); border:1px solid var(--ams-border-subtle); background:var(--ams-bg-secondary); cursor:pointer; transition:background var(--ams-transition-fast);"
+             onclick="selectInstrument(this)">
+          <span style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-bass); flex-shrink:0; opacity:0.6;"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:var(--ams-text-sm); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">贝斯</div>
+            <div style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); white-space:nowrap;">弦乐</div>
+          </div>
+          <button style="width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; flex-shrink:0; transition:color var(--ams-transition-fast);"
+                  onmouseenter="this.style.color='var(--ams-brand-primary)'" onmouseleave="this.style.color='var(--ams-text-tertiary)'" title="添加到轨道">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+        </div>
+
+        <!-- Violin -->
+        <div class="ams-inst-item" style="display:flex; align-items:center; gap:var(--ams-space-2); padding:6px 8px; border-radius:var(--radius-md); border:1px solid var(--ams-border-subtle); background:var(--ams-bg-secondary); cursor:pointer; transition:background var(--ams-transition-fast);"
+             onclick="selectInstrument(this)">
+          <span style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-violin); flex-shrink:0; opacity:0.6;"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:var(--ams-text-sm); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">小提琴</div>
+            <div style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); white-space:nowrap;">弦乐</div>
+          </div>
+          <button style="width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; flex-shrink:0; transition:color var(--ams-transition-fast);"
+                  onmouseenter="this.style.color='var(--ams-brand-primary)'" onmouseleave="this.style.color='var(--ams-text-tertiary)'" title="添加到轨道">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+        </div>
+
+        <!-- Cello -->
+        <div class="ams-inst-item" style="display:flex; align-items:center; gap:var(--ams-space-2); padding:6px 8px; border-radius:var(--radius-md); border:1px solid var(--ams-border-subtle); background:var(--ams-bg-secondary); cursor:pointer; transition:background var(--ams-transition-fast);"
+             onclick="selectInstrument(this)">
+          <span style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-violin); flex-shrink:0; opacity:0.6;"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:var(--ams-text-sm); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">大提琴</div>
+            <div style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); white-space:nowrap;">弦乐</div>
+          </div>
+          <button style="width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; flex-shrink:0; transition:color var(--ams-transition-fast);"
+                  onmouseenter="this.style.color='var(--ams-brand-primary)'" onmouseleave="this.style.color='var(--ams-text-tertiary)'" title="添加到轨道">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+        </div>
+
+        <!-- Flute -->
+        <div class="ams-inst-item" style="display:flex; align-items:center; gap:var(--ams-space-2); padding:6px 8px; border-radius:var(--radius-md); border:1px solid var(--ams-border-subtle); background:var(--ams-bg-secondary); cursor:pointer; transition:background var(--ams-transition-fast);"
+             onclick="selectInstrument(this)">
+          <span style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-winds); flex-shrink:0; opacity:0.6;"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:var(--ams-text-sm); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">长笛</div>
+            <div style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); white-space:nowrap;">管乐</div>
+          </div>
+          <button style="width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; flex-shrink:0; transition:color var(--ams-transition-fast);"
+                  onmouseenter="this.style.color='var(--ams-brand-primary)'" onmouseleave="this.style.color='var(--ams-text-tertiary)'" title="添加到轨道">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+        </div>
+
+        <!-- Saxophone -->
+        <div class="ams-inst-item" style="display:flex; align-items:center; gap:var(--ams-space-2); padding:6px 8px; border-radius:var(--radius-md); border:1px solid var(--ams-border-subtle); background:var(--ams-bg-secondary); cursor:pointer; transition:background var(--ams-transition-fast);"
+             onclick="selectInstrument(this)">
+          <span style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-winds); flex-shrink:0; opacity:0.6;"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:var(--ams-text-sm); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">萨克斯</div>
+            <div style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); white-space:nowrap;">管乐</div>
+          </div>
+          <button style="width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; flex-shrink:0; transition:color var(--ams-transition-fast);"
+                  onmouseenter="this.style.color='var(--ams-brand-primary)'" onmouseleave="this.style.color='var(--ams-text-tertiary)'" title="添加到轨道">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+        </div>
+
+        <!-- Trumpet -->
+        <div class="ams-inst-item" style="display:flex; align-items:center; gap:var(--ams-space-2); padding:6px 8px; border-radius:var(--radius-md); border:1px solid var(--ams-border-subtle); background:var(--ams-bg-secondary); cursor:pointer; transition:background var(--ams-transition-fast);"
+             onclick="selectInstrument(this)">
+          <span style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-strings); flex-shrink:0; opacity:0.6;"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:var(--ams-text-sm); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">小号</div>
+            <div style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); white-space:nowrap;">管乐</div>
+          </div>
+          <button style="width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; flex-shrink:0; transition:color var(--ams-transition-fast);"
+                  onmouseenter="this.style.color='var(--ams-brand-primary)'" onmouseleave="this.style.color='var(--ams-text-tertiary)'" title="添加到轨道">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+        </div>
+
+        <!-- Drum Kit -->
+        <div class="ams-inst-item" style="display:flex; align-items:center; gap:var(--ams-space-2); padding:6px 8px; border-radius:var(--radius-md); border:1px solid var(--ams-border-subtle); background:var(--ams-bg-secondary); cursor:pointer; transition:background var(--ams-transition-fast);"
+             onclick="selectInstrument(this)">
+          <span style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-drums); flex-shrink:0; opacity:0.6;"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:var(--ams-text-sm); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">鼓组</div>
+            <div style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); white-space:nowrap;">打击</div>
+          </div>
+          <button style="width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; flex-shrink:0; transition:color var(--ams-transition-fast);"
+                  onmouseenter="this.style.color='var(--ams-brand-primary)'" onmouseleave="this.style.color='var(--ams-text-tertiary)'" title="添加到轨道">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+        </div>
+
+        <!-- String Ensemble -->
+        <div class="ams-inst-item" style="display:flex; align-items:center; gap:var(--ams-space-2); padding:6px 8px; border-radius:var(--radius-md); border:1px solid var(--ams-border-subtle); background:var(--ams-bg-secondary); cursor:pointer; transition:background var(--ams-transition-fast);"
+             onclick="selectInstrument(this)">
+          <span style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-strings); flex-shrink:0; opacity:0.6;"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:var(--ams-text-sm); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">弦乐合奏</div>
+            <div style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); white-space:nowrap;">弦乐</div>
+          </div>
+          <button style="width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; flex-shrink:0; transition:color var(--ams-transition-fast);"
+                  onmouseenter="this.style.color='var(--ams-brand-primary)'" onmouseleave="this.style.color='var(--ams-text-tertiary)'" title="添加到轨道">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+        </div>
+
+        <!-- Vocal -->
+        <div class="ams-inst-item" style="display:flex; align-items:center; gap:var(--ams-space-2); padding:6px 8px; border-radius:var(--radius-md); border:1px solid var(--ams-border-subtle); background:var(--ams-bg-secondary); cursor:pointer; transition:background var(--ams-transition-fast);"
+             onclick="selectInstrument(this)">
+          <span style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-vocals); flex-shrink:0; opacity:0.6;"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:var(--ams-text-sm); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">人声</div>
+            <div style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); white-space:nowrap;">人声</div>
+          </div>
+          <button style="width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; flex-shrink:0; transition:color var(--ams-transition-fast);"
+                  onmouseenter="this.style.color='var(--ams-brand-primary)'" onmouseleave="this.style.color='var(--ams-text-tertiary)'" title="添加到轨道">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+        </div>
+
+        <!-- Brass Ensemble -->
+        <div class="ams-inst-item" style="display:flex; align-items:center; gap:var(--ams-space-2); padding:6px 8px; border-radius:var(--radius-md); border:1px solid var(--ams-border-subtle); background:var(--ams-bg-secondary); cursor:pointer; transition:background var(--ams-transition-fast);"
+             onclick="selectInstrument(this)">
+          <span style="width:8px; height:8px; border-radius:var(--radius-full); background:var(--ams-track-strings); flex-shrink:0; opacity:0.6;"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:var(--ams-text-sm); color:var(--ams-text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">铜管合奏</div>
+            <div style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary); white-space:nowrap;">管乐</div>
+          </div>
+          <button style="width:20px; height:20px; display:flex; align-items:center; justify-content:center; border:none; border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-tertiary); cursor:pointer; flex-shrink:0; transition:color var(--ams-transition-fast);"
+                  onmouseenter="this.style.color='var(--ams-brand-primary)'" onmouseleave="this.style.color='var(--ams-text-tertiary)'" title="添加到轨道">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="2" x2="6" y2="10"/><line x1="2" y1="6" x2="10" y2="6"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== RIGHT: Center + Bottom (scrollable) ===== -->
+    <div style="flex:1; display:flex; flex-direction:column; overflow-y:auto;">
+
+      <!-- ===== CENTER PANEL: Tone & Pitch Controls ===== -->
+      <div style="flex:1; padding:var(--ams-space-4) var(--ams-space-5); overflow-y:auto;">
+
+        <!-- Section 1: Pitch Control -->
+        <div style="margin-bottom:var(--ams-space-5);">
+          <h3 style="font-family:var(--ams-font-display); font-size:var(--ams-text-md); font-weight:var(--ams-weight-semibold); color:var(--ams-text-primary); margin-bottom:var(--ams-space-3); display:flex; align-items:center; gap:var(--ams-space-2);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--ams-brand-primary)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 1v14M4 4l4-3 4 3M4 12l4 3 4-3"/>
+            </svg>
+            音调控制
+          </h3>
+
+          <!-- Octave Selector -->
+          <div style="display:flex; align-items:center; gap:var(--ams-space-3); margin-bottom:var(--ams-space-3);">
+            <span style="font-size:var(--ams-text-sm); color:var(--ams-text-secondary); white-space:nowrap;">八度</span>
+            <div style="display:flex; gap:2px;">
+              <button class="ams-oct-btn" style="width:32px; height:26px; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-subtle); border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap;"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="if(!this.classList.contains('ams-oct-active'))this.style.background='transparent'"
+                      onclick="selectOctave(this)">-2</button>
+              <button class="ams-oct-btn" style="width:32px; height:26px; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-subtle); border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap;"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="if(!this.classList.contains('ams-oct-active'))this.style.background='transparent'"
+                      onclick="selectOctave(this)">-1</button>
+              <button class="ams-oct-btn ams-oct-active" style="width:32px; height:26px; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-brand-primary); border-radius:var(--radius-sm); background:var(--ams-brand-primary-muted); color:var(--ams-brand-primary); font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap;"
+                      onclick="selectOctave(this)">0</button>
+              <button class="ams-oct-btn" style="width:32px; height:26px; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-subtle); border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap;"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="if(!this.classList.contains('ams-oct-active'))this.style.background='transparent'"
+                      onclick="selectOctave(this)">+1</button>
+              <button class="ams-oct-btn" style="width:32px; height:26px; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-subtle); border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap;"
+                      onmouseenter="this.style.background='var(--ams-bg-hover)'" onmouseleave="if(!this.classList.contains('ams-oct-active'))this.style.background='transparent'"
+                      onclick="selectOctave(this)">+2</button>
+            </div>
+          </div>
+
+          <!-- Fine Tuning -->
+          <div style="display:flex; align-items:center; gap:var(--ams-space-3); margin-bottom:var(--ams-space-3);">
+            <span style="font-size:var(--ams-text-sm); color:var(--ams-text-secondary); white-space:nowrap; min-width:56px;">微调</span>
+            <input type="range" min="-50" max="50" value="0" style="flex:1; height:4px; accent-color:var(--ams-brand-primary); cursor:pointer;">
+            <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); color:var(--ams-text-primary); min-width:42px; text-align:right;">0 ct</span>
+          </div>
+
+          <!-- Master Pitch -->
+          <div style="display:flex; align-items:center; gap:var(--ams-space-3); margin-bottom:var(--ams-space-3);">
+            <span style="font-size:var(--ams-text-sm); color:var(--ams-text-secondary); white-space:nowrap; min-width:56px;">主音高</span>
+            <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-sm); color:var(--ams-text-primary); background:var(--ams-bg-tertiary); padding:3px 8px; border-radius:var(--radius-sm); border:1px solid var(--ams-border-subtle);">A4 = 440 Hz</span>
+          </div>
+
+          <!-- Pitch Bend Range -->
+          <div style="display:flex; align-items:center; gap:var(--ams-space-3);">
+            <span style="font-size:var(--ams-text-sm); color:var(--ams-text-secondary); white-space:nowrap; min-width:56px;">弯音范围</span>
+            <div style="display:flex; gap:2px;">
+              <button class="ams-bend-btn" style="width:28px; height:24px; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-subtle); border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap;" onclick="selectBend(this)">1</button>
+              <button class="ams-bend-btn" style="width:28px; height:24px; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-subtle); border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap;" onclick="selectBend(this)">2</button>
+              <button class="ams-bend-btn ams-bend-active" style="width:28px; height:24px; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-brand-primary); border-radius:var(--radius-sm); background:var(--ams-brand-primary-muted); color:var(--ams-brand-primary); font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap;" onclick="selectBend(this)">3</button>
+              <button class="ams-bend-btn" style="width:28px; height:24px; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-subtle); border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap;" onclick="selectBend(this)">6</button>
+              <button class="ams-bend-btn" style="width:28px; height:24px; display:flex; align-items:center; justify-content:center; border:1px solid var(--ams-border-subtle); border-radius:var(--radius-sm); background:transparent; color:var(--ams-text-secondary); font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap;" onclick="selectBend(this)">12</button>
+            </div>
+            <span style="font-size:var(--ams-text-xs); color:var(--ams-text-tertiary);">半音</span>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div style="height:1px; background:var(--ams-border-default); margin:var(--ams-space-4) 0;"></div>
+
+        <!-- Section 2: Tone Parameters (2-column grid) -->
+        <div style="margin-bottom:var(--ams-space-5);">
+          <h3 style="font-family:var(--ams-font-display); font-size:var(--ams-text-md); font-weight:var(--ams-weight-semibold); color:var(--ams-text-primary); margin-bottom:var(--ams-space-3); display:flex; align-items:center; gap:var(--ams-space-2);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--ams-brand-primary)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="8" cy="8" r="3"/><circle cx="8" cy="8" r="6"/><line x1="8" y1="5" x2="8" y2="8"/>
+            </svg>
+            音色参数
+          </h3>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--ams-space-2) var(--ams-space-5);">
+
+            <!-- Attack -->
+            <div style="display:flex; align-items:center; gap:var(--ams-space-2);">
+              <span style="font-size:var(--ams-text-xs); color:var(--ams-text-secondary); white-space:nowrap; min-width:56px;">起始</span>
+              <input type="range" min="0" max="5000" value="10" style="flex:1; height:3px; accent-color:var(--ams-brand-primary); cursor:pointer;">
+              <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); color:var(--ams-text-primary); min-width:36px; text-align:right;">0.01s</span>
+            </div>
+
+            <!-- Decay -->
+            <div style="display:flex; align-items:center; gap:var(--ams-space-2);">
+              <span style="font-size:var(--ams-text-xs); color:var(--ams-text-secondary); white-space:nowrap; min-width:56px;">衰减</span>
+              <input type="range" min="0" max="5000" value="500" style="flex:1; height:3px; accent-color:var(--ams-brand-primary); cursor:pointer;">
+              <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); color:var(--ams-text-primary); min-width:36px; text-align:right;">0.50s</span>
+            </div>
+
+            <!-- Sustain -->
+            <div style="display:flex; align-items:center; gap:var(--ams-space-2);">
+              <span style="font-size:var(--ams-text-xs); color:var(--ams-text-secondary); white-space:nowrap; min-width:56px;">延音</span>
+              <input type="range" min="0" max="100" value="70" style="flex:1; height:3px; accent-color:var(--ams-brand-primary); cursor:pointer;">
+              <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); color:var(--ams-text-primary); min-width:36px; text-align:right;">70%</span>
+            </div>
+
+            <!-- Release -->
+            <div style="display:flex; align-items:center; gap:var(--ams-space-2);">
+              <span style="font-size:var(--ams-text-xs); color:var(--ams-text-secondary); white-space:nowrap; min-width:56px;">释放</span>
+              <input type="range" min="0" max="10000" value="300" style="flex:1; height:3px; accent-color:var(--ams-brand-primary); cursor:pointer;">
+              <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); color:var(--ams-text-primary); min-width:36px; text-align:right;">0.30s</span>
+            </div>
+
+            <!-- Cutoff -->
+            <div style="display:flex; align-items:center; gap:var(--ams-space-2);">
+              <span style="font-size:var(--ams-text-xs); color:var(--ams-text-secondary); white-space:nowrap; min-width:56px;">截止频率</span>
+              <input type="range" min="20" max="20000" value="8000" style="flex:1; height:3px; accent-color:var(--ams-brand-primary); cursor:pointer;">
+              <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); color:var(--ams-text-primary); min-width:42px; text-align:right;">8.0kHz</span>
+            </div>
+
+            <!-- Resonance -->
+            <div style="display:flex; align-items:center; gap:var(--ams-space-2);">
+              <span style="font-size:var(--ams-text-xs); color:var(--ams-text-secondary); white-space:nowrap; min-width:56px;">共鸣</span>
+              <input type="range" min="0" max="100" value="20" style="flex:1; height:3px; accent-color:var(--ams-brand-primary); cursor:pointer;">
+              <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); color:var(--ams-text-primary); min-width:36px; text-align:right;">20%</span>
+            </div>
+
+            <!-- Reverb -->
+            <div style="display:flex; align-items:center; gap:var(--ams-space-2);">
+              <span style="font-size:var(--ams-text-xs); color:var(--ams-text-secondary); white-space:nowrap; min-width:56px;">混响</span>
+              <input type="range" min="0" max="100" value="25" style="flex:1; height:3px; accent-color:var(--ams-brand-primary); cursor:pointer;">
+              <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); color:var(--ams-text-primary); min-width:36px; text-align:right;">25%</span>
+            </div>
+
+            <!-- Chorus -->
+            <div style="display:flex; align-items:center; gap:var(--ams-space-2);">
+              <span style="font-size:var(--ams-text-xs); color:var(--ams-text-secondary); white-space:nowrap; min-width:56px;">合唱</span>
+              <input type="range" min="0" max="100" value="10" style="flex:1; height:3px; accent-color:var(--ams-brand-primary); cursor:pointer;">
+              <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); color:var(--ams-text-primary); min-width:36px; text-align:right;">10%</span>
+            </div>
+
+            <!-- Delay -->
+            <div style="display:flex; align-items:center; gap:var(--ams-space-2);">
+              <span style="font-size:var(--ams-text-xs); color:var(--ams-text-secondary); white-space:nowrap; min-width:56px;">延迟</span>
+              <input type="range" min="0" max="1000" value="0" style="flex:1; height:3px; accent-color:var(--ams-brand-primary); cursor:pointer;">
+              <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); color:var(--ams-text-primary); min-width:42px; text-align:right;">0ms</span>
+            </div>
+
+            <!-- Pan -->
+            <div style="display:flex; align-items:center; gap:var(--ams-space-2);">
+              <span style="font-size:var(--ams-text-xs); color:var(--ams-text-secondary); white-space:nowrap; min-width:56px;">声像</span>
+              <input type="range" min="-100" max="100" value="0" style="flex:1; height:3px; accent-color:var(--ams-brand-primary); cursor:pointer;">
+              <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); color:var(--ams-text-primary); min-width:24px; text-align:right;">C</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div style="height:1px; background:var(--ams-border-default); margin:var(--ams-space-4) 0;"></div>
+
+        <!-- Section 3: Presets -->
+        <div style="margin-bottom:var(--ams-space-5);">
+          <h3 style="font-family:var(--ams-font-display); font-size:var(--ams-text-md); font-weight:var(--ams-weight-semibold); color:var(--ams-text-primary); margin-bottom:var(--ams-space-3); display:flex; align-items:center; gap:var(--ams-space-2);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--ams-brand-primary)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="4" height="4" rx="1"/><rect x="10" y="2" width="4" height="4" rx="1"/>
+              <rect x="2" y="10" width="4" height="4" rx="1"/><rect x="10" y="10" width="4" height="4" rx="1"/>
+            </svg>
+            预设
+          </h3>
+
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; margin-bottom:var(--ams-space-3);">
+            <button class="ams-preset-btn" style="padding:6px 10px; font-size:var(--ams-text-xs); border:1px solid var(--ams-border-subtle); border-radius:var(--radius-md); background:var(--ams-bg-tertiary); color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast), border-color var(--ams-transition-fast); white-space:nowrap; font-family:var(--ams-font-body);"
+                    onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)';this.style.borderColor='var(--ams-border-default)'" onmouseleave="this.style.background='var(--ams-bg-tertiary)';this.style.color='var(--ams-text-secondary)';this.style.borderColor='var(--ams-border-subtle)'"
+                    onclick="selectPreset(this)">温暖钢琴</button>
+            <button class="ams-preset-btn" style="padding:6px 10px; font-size:var(--ams-text-xs); border:1px solid var(--ams-border-subtle); border-radius:var(--radius-md); background:var(--ams-bg-tertiary); color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast), border-color var(--ams-transition-fast); white-space:nowrap; font-family:var(--ams-font-body);"
+                    onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)';this.style.borderColor='var(--ams-border-default)'" onmouseleave="this.style.background='var(--ams-bg-tertiary)';this.style.color='var(--ams-text-secondary)';this.style.borderColor='var(--ams-border-subtle)'"
+                    onclick="selectPreset(this)">明亮电钢</button>
+            <button class="ams-preset-btn" style="padding:6px 10px; font-size:var(--ams-text-xs); border:1px solid var(--ams-border-subtle); border-radius:var(--radius-md); background:var(--ams-bg-tertiary); color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast), border-color var(--ams-transition-fast); white-space:nowrap; font-family:var(--ams-font-body);"
+                    onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)';this.style.borderColor='var(--ams-border-default)'" onmouseleave="this.style.background='var(--ams-bg-tertiary)';this.style.color='var(--ams-text-secondary)';this.style.borderColor='var(--ams-border-subtle)'"
+                    onclick="selectPreset(this)">深沉管风琴</button>
+            <button class="ams-preset-btn" style="padding:6px 10px; font-size:var(--ams-text-xs); border:1px solid var(--ams-border-subtle); border-radius:var(--radius-md); background:var(--ams-bg-tertiary); color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast), border-color var(--ams-transition-fast); white-space:nowrap; font-family:var(--ams-font-body);"
+                    onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)';this.style.borderColor='var(--ams-border-default)'" onmouseleave="this.style.background='var(--ams-bg-tertiary)';this.style.color='var(--ams-text-secondary)';this.style.borderColor='var(--ams-border-subtle)'"
+                    onclick="selectPreset(this)">柔和弦乐</button>
+            <button class="ams-preset-btn" style="padding:6px 10px; font-size:var(--ams-text-xs); border:1px solid var(--ams-border-subtle); border-radius:var(--radius-md); background:var(--ams-bg-tertiary); color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast), border-color var(--ams-transition-fast); white-space:nowrap; font-family:var(--ams-font-body);"
+                    onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)';this.style.borderColor='var(--ams-border-default)'" onmouseleave="this.style.background='var(--ams-bg-tertiary)';this.style.color='var(--ams-text-secondary)';this.style.borderColor='var(--ams-border-subtle)'"
+                    onclick="selectPreset(this)">清脆吉他</button>
+            <button class="ams-preset-btn" style="padding:6px 10px; font-size:var(--ams-text-xs); border:1px solid var(--ams-border-subtle); border-radius:var(--radius-md); background:var(--ams-bg-tertiary); color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast), border-color var(--ams-transition-fast); white-space:nowrap; font-family:var(--ams-font-body);"
+                    onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)';this.style.borderColor='var(--ams-border-default)'" onmouseleave="this.style.background='var(--ams-bg-tertiary)';this.style.color='var(--ams-text-secondary)';this.style.borderColor='var(--ams-border-subtle)'"
+                    onclick="selectPreset(this)">爵士贝斯</button>
+            <button class="ams-preset-btn" style="padding:6px 10px; font-size:var(--ams-text-xs); border:1px solid var(--ams-border-subtle); border-radius:var(--radius-md); background:var(--ams-bg-tertiary); color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast), border-color var(--ams-transition-fast); white-space:nowrap; font-family:var(--ams-font-body);"
+                    onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)';this.style.borderColor='var(--ams-border-default)'" onmouseleave="this.style.background='var(--ams-bg-tertiary)';this.style.color='var(--ams-text-secondary)';this.style.borderColor='var(--ams-border-subtle)'"
+                    onclick="selectPreset(this)">电影铜管</button>
+            <button class="ams-preset-btn" style="padding:6px 10px; font-size:var(--ams-text-xs); border:1px solid var(--ams-border-subtle); border-radius:var(--radius-md); background:var(--ams-bg-tertiary); color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast), border-color var(--ams-transition-fast); white-space:nowrap; font-family:var(--ams-font-body);"
+                    onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)';this.style.borderColor='var(--ams-border-default)'" onmouseleave="this.style.background='var(--ams-bg-tertiary)';this.style.color='var(--ams-text-secondary)';this.style.borderColor='var(--ams-border-subtle)'"
+                    onclick="selectPreset(this)">电子脉冲</button>
+          </div>
+
+          <!-- Save Preset Button (ghost style) -->
+          <button style="padding:5px 14px; font-size:var(--ams-text-xs); border:1px solid var(--ams-border-default); border-radius:var(--radius-md); background:transparent; color:var(--ams-text-secondary); cursor:pointer; transition:background var(--ams-transition-fast), color var(--ams-transition-fast); white-space:nowrap; font-family:var(--ams-font-body);"
+                  onmouseenter="this.style.background='var(--ams-bg-hover)';this.style.color='var(--ams-text-primary)'" onmouseleave="this.style.background='transparent';this.style.color='var(--ams-text-secondary)'">保存预设</button>
+        </div>
+
+      </div>
+
+      <!-- ===== BOTTOM: Virtual Piano Keyboard ===== -->
+      <div style="padding:0 var(--ams-space-5) var(--ams-space-4); border-top:1px solid var(--ams-border-default); background:var(--ams-bg-secondary);">
+        <div style="padding:var(--ams-space-2) 0 var(--ams-space-3);">
+          <span style="font-family:var(--ams-font-mono); font-size:var(--ams-text-xs); color:var(--ams-text-tertiary);">C3 - B4</span>
+        </div>
+        <div id="ams-piano-keyboard" style="position:relative; height:80px; display:flex; user-select:none;">
+
+          <!-- White keys: 14 keys (C3 to B4) -->
+          <div class="ams-piano-key ams-white-key" data-note="C3" style="flex:1; height:100%; background:var(--ams-bg-elevated); border:1px solid var(--ams-border-default); border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; transition:background var(--ams-transition-fast); display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; position:relative; z-index:1;"
+               onmouseenter="this.querySelector('.ams-key-label').style.opacity='1'" onmouseleave="this.querySelector('.ams-key-label').style.opacity='0'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-elevated)'">
+            <span class="ams-key-label" style="font-family:var(--ams-font-mono); font-size:9px; color:var(--ams-text-tertiary); opacity:0; transition:opacity var(--ams-transition-fast);">C3</span>
+          </div>
+          <div class="ams-piano-key ams-white-key" data-note="D3" style="flex:1; height:100%; background:var(--ams-bg-elevated); border:1px solid var(--ams-border-default); border-left:none; border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; transition:background var(--ams-transition-fast); display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; position:relative; z-index:1;"
+               onmouseenter="this.querySelector('.ams-key-label').style.opacity='1'" onmouseleave="this.querySelector('.ams-key-label').style.opacity='0'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-elevated)'">
+            <span class="ams-key-label" style="font-family:var(--ams-font-mono); font-size:9px; color:var(--ams-text-tertiary); opacity:0; transition:opacity var(--ams-transition-fast);">D3</span>
+          </div>
+          <div class="ams-piano-key ams-white-key" data-note="E3" style="flex:1; height:100%; background:var(--ams-bg-elevated); border:1px solid var(--ams-border-default); border-left:none; border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; transition:background var(--ams-transition-fast); display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; position:relative; z-index:1;"
+               onmouseenter="this.querySelector('.ams-key-label').style.opacity='1'" onmouseleave="this.querySelector('.ams-key-label').style.opacity='0'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-elevated)'">
+            <span class="ams-key-label" style="font-family:var(--ams-font-mono); font-size:9px; color:var(--ams-text-tertiary); opacity:0; transition:opacity var(--ams-transition-fast);">E3</span>
+          </div>
+          <div class="ams-piano-key ams-white-key" data-note="F3" style="flex:1; height:100%; background:var(--ams-bg-elevated); border:1px solid var(--ams-border-default); border-left:none; border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; transition:background var(--ams-transition-fast); display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; position:relative; z-index:1;"
+               onmouseenter="this.querySelector('.ams-key-label').style.opacity='1'" onmouseleave="this.querySelector('.ams-key-label').style.opacity='0'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-elevated)'">
+            <span class="ams-key-label" style="font-family:var(--ams-font-mono); font-size:9px; color:var(--ams-text-tertiary); opacity:0; transition:opacity var(--ams-transition-fast);">F3</span>
+          </div>
+          <div class="ams-piano-key ams-white-key" data-note="G3" style="flex:1; height:100%; background:var(--ams-bg-elevated); border:1px solid var(--ams-border-default); border-left:none; border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; transition:background var(--ams-transition-fast); display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; position:relative; z-index:1;"
+               onmouseenter="this.querySelector('.ams-key-label').style.opacity='1'" onmouseleave="this.querySelector('.ams-key-label').style.opacity='0'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-elevated)'">
+            <span class="ams-key-label" style="font-family:var(--ams-font-mono); font-size:9px; color:var(--ams-text-tertiary); opacity:0; transition:opacity var(--ams-transition-fast);">G3</span>
+          </div>
+          <div class="ams-piano-key ams-white-key" data-note="A3" style="flex:1; height:100%; background:var(--ams-bg-elevated); border:1px solid var(--ams-border-default); border-left:none; border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; transition:background var(--ams-transition-fast); display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; position:relative; z-index:1;"
+               onmouseenter="this.querySelector('.ams-key-label').style.opacity='1'" onmouseleave="this.querySelector('.ams-key-label').style.opacity='0'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-elevated)'">
+            <span class="ams-key-label" style="font-family:var(--ams-font-mono); font-size:9px; color:var(--ams-text-tertiary); opacity:0; transition:opacity var(--ams-transition-fast);">A3</span>
+          </div>
+          <div class="ams-piano-key ams-white-key" data-note="B3" style="flex:1; height:100%; background:var(--ams-bg-elevated); border:1px solid var(--ams-border-default); border-left:none; border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; transition:background var(--ams-transition-fast); display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; position:relative; z-index:1;"
+               onmouseenter="this.querySelector('.ams-key-label').style.opacity='1'" onmouseleave="this.querySelector('.ams-key-label').style.opacity='0'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-elevated)'">
+            <span class="ams-key-label" style="font-family:var(--ams-font-mono); font-size:9px; color:var(--ams-text-tertiary); opacity:0; transition:opacity var(--ams-transition-fast);">B3</span>
+          </div>
+          <div class="ams-piano-key ams-white-key" data-note="C4" style="flex:1; height:100%; background:var(--ams-bg-elevated); border:1px solid var(--ams-border-default); border-left:none; border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; transition:background var(--ams-transition-fast); display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; position:relative; z-index:1;"
+               onmouseenter="this.querySelector('.ams-key-label').style.opacity='1'" onmouseleave="this.querySelector('.ams-key-label').style.opacity='0'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-elevated)'">
+            <span class="ams-key-label" style="font-family:var(--ams-font-mono); font-size:9px; color:var(--ams-text-tertiary); opacity:0; transition:opacity var(--ams-transition-fast);">C4</span>
+          </div>
+          <div class="ams-piano-key ams-white-key" data-note="D4" style="flex:1; height:100%; background:var(--ams-bg-elevated); border:1px solid var(--ams-border-default); border-left:none; border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; transition:background var(--ams-transition-fast); display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; position:relative; z-index:1;"
+               onmouseenter="this.querySelector('.ams-key-label').style.opacity='1'" onmouseleave="this.querySelector('.ams-key-label').style.opacity='0'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-elevated)'">
+            <span class="ams-key-label" style="font-family:var(--ams-font-mono); font-size:9px; color:var(--ams-text-tertiary); opacity:0; transition:opacity var(--ams-transition-fast);">D4</span>
+          </div>
+          <div class="ams-piano-key ams-white-key" data-note="E4" style="flex:1; height:100%; background:var(--ams-bg-elevated); border:1px solid var(--ams-border-default); border-left:none; border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; transition:background var(--ams-transition-fast); display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; position:relative; z-index:1;"
+               onmouseenter="this.querySelector('.ams-key-label').style.opacity='1'" onmouseleave="this.querySelector('.ams-key-label').style.opacity='0'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-elevated)'">
+            <span class="ams-key-label" style="font-family:var(--ams-font-mono); font-size:9px; color:var(--ams-text-tertiary); opacity:0; transition:opacity var(--ams-transition-fast);">E4</span>
+          </div>
+          <div class="ams-piano-key ams-white-key" data-note="F4" style="flex:1; height:100%; background:var(--ams-bg-elevated); border:1px solid var(--ams-border-default); border-left:none; border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; transition:background var(--ams-transition-fast); display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; position:relative; z-index:1;"
+               onmouseenter="this.querySelector('.ams-key-label').style.opacity='1'" onmouseleave="this.querySelector('.ams-key-label').style.opacity='0'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-elevated)'">
+            <span class="ams-key-label" style="font-family:var(--ams-font-mono); font-size:9px; color:var(--ams-text-tertiary); opacity:0; transition:opacity var(--ams-transition-fast);">F4</span>
+          </div>
+          <div class="ams-piano-key ams-white-key" data-note="G4" style="flex:1; height:100%; background:var(--ams-bg-elevated); border:1px solid var(--ams-border-default); border-left:none; border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; transition:background var(--ams-transition-fast); display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; position:relative; z-index:1;"
+               onmouseenter="this.querySelector('.ams-key-label').style.opacity='1'" onmouseleave="this.querySelector('.ams-key-label').style.opacity='0'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-elevated)'">
+            <span class="ams-key-label" style="font-family:var(--ams-font-mono); font-size:9px; color:var(--ams-text-tertiary); opacity:0; transition:opacity var(--ams-transition-fast);">G4</span>
+          </div>
+          <div class="ams-piano-key ams-white-key" data-note="A4" style="flex:1; height:100%; background:var(--ams-bg-elevated); border:1px solid var(--ams-border-default); border-left:none; border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; transition:background var(--ams-transition-fast); display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; position:relative; z-index:1;"
+               onmouseenter="this.querySelector('.ams-key-label').style.opacity='1'" onmouseleave="this.querySelector('.ams-key-label').style.opacity='0'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-elevated)'">
+            <span class="ams-key-label" style="font-family:var(--ams-font-mono); font-size:9px; color:var(--ams-text-tertiary); opacity:0; transition:opacity var(--ams-transition-fast);">A4</span>
+          </div>
+          <div class="ams-piano-key ams-white-key" data-note="B4" style="flex:1; height:100%; background:var(--ams-bg-elevated); border:1px solid var(--ams-border-default); border-left:none; border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; transition:background var(--ams-transition-fast); display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; position:relative; z-index:1;"
+               onmouseenter="this.querySelector('.ams-key-label').style.opacity='1'" onmouseleave="this.querySelector('.ams-key-label').style.opacity='0'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-elevated)'">
+            <span class="ams-key-label" style="font-family:var(--ams-font-mono); font-size:9px; color:var(--ams-text-tertiary); opacity:0; transition:opacity var(--ams-transition-fast);">B4</span>
+          </div>
+
+          <!-- Black keys: 10 keys positioned absolutely between white keys -->
+          <!-- Black key positions: between C-D, D-E, (skip E-F), F-G, G-A, A-B for each octave -->
+          <!-- C#3 -->
+          <div class="ams-piano-key ams-black-key" data-note="C#3" style="position:absolute; left:calc(100%/14 * 1 - 12px); top:0; width:24px; height:55%; background:var(--ams-bg-deep); border:1px solid var(--ams-border-strong); border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; z-index:2; transition:background var(--ams-transition-fast);"
+               onmouseenter="this.style.background='var(--ams-bg-active)'" onmouseleave="this.style.background='var(--ams-bg-deep)'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-deep)'"
+               title="C#3"></div>
+          <!-- D#3 -->
+          <div class="ams-piano-key ams-black-key" data-note="D#3" style="position:absolute; left:calc(100%/14 * 2 - 12px); top:0; width:24px; height:55%; background:var(--ams-bg-deep); border:1px solid var(--ams-border-strong); border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; z-index:2; transition:background var(--ams-transition-fast);"
+               onmouseenter="this.style.background='var(--ams-bg-active)'" onmouseleave="this.style.background='var(--ams-bg-deep)'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-deep)'"
+               title="D#3"></div>
+          <!-- F#3 -->
+          <div class="ams-piano-key ams-black-key" data-note="F#3" style="position:absolute; left:calc(100%/14 * 4 - 12px); top:0; width:24px; height:55%; background:var(--ams-bg-deep); border:1px solid var(--ams-border-strong); border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; z-index:2; transition:background var(--ams-transition-fast);"
+               onmouseenter="this.style.background='var(--ams-bg-active)'" onmouseleave="this.style.background='var(--ams-bg-deep)'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-deep)'"
+               title="F#3"></div>
+          <!-- G#3 -->
+          <div class="ams-piano-key ams-black-key" data-note="G#3" style="position:absolute; left:calc(100%/14 * 5 - 12px); top:0; width:24px; height:55%; background:var(--ams-bg-deep); border:1px solid var(--ams-border-strong); border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; z-index:2; transition:background var(--ams-transition-fast);"
+               onmouseenter="this.style.background='var(--ams-bg-active)'" onmouseleave="this.style.background='var(--ams-bg-deep)'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-deep)'"
+               title="G#3"></div>
+          <!-- A#3 -->
+          <div class="ams-piano-key ams-black-key" data-note="A#3" style="position:absolute; left:calc(100%/14 * 6 - 12px); top:0; width:24px; height:55%; background:var(--ams-bg-deep); border:1px solid var(--ams-border-strong); border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; z-index:2; transition:background var(--ams-transition-fast);"
+               onmouseenter="this.style.background='var(--ams-bg-active)'" onmouseleave="this.style.background='var(--ams-bg-deep)'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-deep)'"
+               title="A#3"></div>
+          <!-- C#4 -->
+          <div class="ams-piano-key ams-black-key" data-note="C#4" style="position:absolute; left:calc(100%/14 * 8 - 12px); top:0; width:24px; height:55%; background:var(--ams-bg-deep); border:1px solid var(--ams-border-strong); border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; z-index:2; transition:background var(--ams-transition-fast);"
+               onmouseenter="this.style.background='var(--ams-bg-active)'" onmouseleave="this.style.background='var(--ams-bg-deep)'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-deep)'"
+               title="C#4"></div>
+          <!-- D#4 -->
+          <div class="ams-piano-key ams-black-key" data-note="D#4" style="position:absolute; left:calc(100%/14 * 9 - 12px); top:0; width:24px; height:55%; background:var(--ams-bg-deep); border:1px solid var(--ams-border-strong); border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; z-index:2; transition:background var(--ams-transition-fast);"
+               onmouseenter="this.style.background='var(--ams-bg-active)'" onmouseleave="this.style.background='var(--ams-bg-deep)'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-deep)'"
+               title="D#4"></div>
+          <!-- F#4 -->
+          <div class="ams-piano-key ams-black-key" data-note="F#4" style="position:absolute; left:calc(100%/14 * 11 - 12px); top:0; width:24px; height:55%; background:var(--ams-bg-deep); border:1px solid var(--ams-border-strong); border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; z-index:2; transition:background var(--ams-transition-fast);"
+               onmouseenter="this.style.background='var(--ams-bg-active)'" onmouseleave="this.style.background='var(--ams-bg-deep)'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-deep)'"
+               title="F#4"></div>
+          <!-- G#4 -->
+          <div class="ams-piano-key ams-black-key" data-note="G#4" style="position:absolute; left:calc(100%/14 * 12 - 12px); top:0; width:24px; height:55%; background:var(--ams-bg-deep); border:1px solid var(--ams-border-strong); border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; z-index:2; transition:background var(--ams-transition-fast);"
+               onmouseenter="this.style.background='var(--ams-bg-active)'" onmouseleave="this.style.background='var(--ams-bg-deep)'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-deep)'"
+               title="G#4"></div>
+          <!-- A#4 -->
+          <div class="ams-piano-key ams-black-key" data-note="A#4" style="position:absolute; left:calc(100%/14 * 13 - 12px); top:0; width:24px; height:55%; background:var(--ams-bg-deep); border:1px solid var(--ams-border-strong); border-radius:0 0 var(--radius-sm) var(--radius-sm); cursor:pointer; z-index:2; transition:background var(--ams-transition-fast);"
+               onmouseenter="this.style.background='var(--ams-bg-active)'" onmouseleave="this.style.background='var(--ams-bg-deep)'"
+               onmousedown="this.style.background='var(--ams-brand-primary-muted)'" onmouseup="this.style.background='var(--ams-bg-deep)'"
+               title="A#4"></div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========== BOTTOM STATUS BAR ========== -->
+  <footer id="ams-status-bar" style="grid-area:status; height:28px; background:var(--ams-bg-primary); border-top:1px solid var(--ams-border-default); display:flex; align-items:center; justify-content:space-between; padding:0 var(--ams-space-3); font-size:var(--ams-text-xs); color:var(--ams-text-tertiary);">
+    <div style="display:flex; align-items:center; gap:6px;">
+      <span style="color:var(--ams-text-secondary);">未命名项目</span>
+      <span style="width:6px; height:6px; border-radius:var(--radius-full); background:var(--ams-accent-warm); opacity:0;" title="已修改"></span>
+    </div>
+    <div style="display:flex; align-items:center; gap:var(--ams-space-3);">
+      <div style="display:flex; align-items:center; gap:4px;">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="var(--ams-text-tertiary)"><rect x="1" y="6" width="2" height="3" rx="0.5"/><rect x="4" y="4" width="2" height="5" rx="0.5"/><rect x="7" y="2" width="2" height="7" rx="0.5"/></svg>
+        <span style="font-family:var(--ams-font-mono);">CPU 12%</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:4px;">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="var(--ams-text-tertiary)" stroke-width="1"><rect x="1" y="2" width="8" height="6" rx="1"/><line x1="3" y1="4" x2="3" y2="6"/><line x1="5" y1="4" x2="5" y2="6"/><line x1="7" y1="4" x2="7" y2="6"/></svg>
+        <span style="font-family:var(--ams-font-mono);">MEM 284MB</span>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; gap:var(--ams-space-3);">
+      <div style="display:flex; align-items:center; gap:4px;">
+        <span style="width:6px; height:6px; border-radius:var(--radius-full); background:var(--state-success);"></span>
+        <span style="font-family:var(--ams-font-mono);">WASAPI</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ========== Shell JS: Nav activation + tooltip behaviour ========== -->
+<script>
+(function() {
+  /* Activate nav by data-nav-key */
+  function setActiveNav(key) {
+    document.querySelectorAll('.ams-nav-btn').forEach(function(btn) {
+      btn.classList.remove('ams-nav-active');
+      btn.style.background = 'transparent';
+      btn.style.color = 'var(--ams-text-tertiary)';
+    });
+    var target = document.querySelector('.ams-nav-btn[data-nav-key="' + key + '"]');
+    if (target) {
+      target.classList.add('ams-nav-active');
+      target.style.background = 'var(--ams-brand-primary-muted)';
+      target.style.color = 'var(--ams-brand-primary)';
+    }
+  }
+
+  /* Tooltip show on hover */
+  document.querySelectorAll('.ams-nav-btn').forEach(function(btn) {
+    var tip = btn.querySelector('.ams-nav-tip');
+    if (!tip) return;
+    btn.addEventListener('mouseenter', function() { tip.style.opacity = '1'; });
+    btn.addEventListener('mouseleave', function() { tip.style.opacity = '0'; });
+  });
+
+  /* Nav click handlers */
+  document.querySelectorAll('.ams-nav-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var key = btn.getAttribute('data-nav-key');
+      if (key) setActiveNav(key);
+    });
+  });
+
+  /* Expose for pages */
+  window.amsSetActiveNav = setActiveNav;
+})();
+
+/* Instrument list selection */
+function selectInstrument(el) {
+  document.querySelectorAll('.ams-inst-item').forEach(function(item) {
+    item.classList.remove('ams-inst-selected');
+    item.style.background = 'var(--ams-bg-secondary)';
+    item.style.borderLeft = '1px solid var(--ams-border-subtle)';
+    item.style.borderColor = 'var(--ams-border-subtle)';
+    var dot = item.querySelector('span');
+    if (dot) dot.style.opacity = '0.6';
+  });
+  el.classList.add('ams-inst-selected');
+  el.style.background = 'var(--ams-brand-primary-muted)';
+  el.style.borderLeft = '3px solid var(--ams-brand-primary)';
+  var dot = el.querySelector('span');
+  if (dot) dot.style.opacity = '1';
+}
+
+/* Octave selector */
+function selectOctave(el) {
+  document.querySelectorAll('.ams-oct-btn').forEach(function(btn) {
+    btn.classList.remove('ams-oct-active');
+    btn.style.background = 'transparent';
+    btn.style.color = 'var(--ams-text-secondary)';
+    btn.style.borderColor = 'var(--ams-border-subtle)';
+  });
+  el.classList.add('ams-oct-active');
+  el.style.background = 'var(--ams-brand-primary-muted)';
+  el.style.color = 'var(--ams-brand-primary)';
+  el.style.borderColor = 'var(--ams-brand-primary)';
+}
+
+/* Pitch bend selector */
+function selectBend(el) {
+  document.querySelectorAll('.ams-bend-btn').forEach(function(btn) {
+    btn.classList.remove('ams-bend-active');
+    btn.style.background = 'transparent';
+    btn.style.color = 'var(--ams-text-secondary)';
+    btn.style.borderColor = 'var(--ams-border-subtle)';
+  });
+  el.classList.add('ams-bend-active');
+  el.style.background = 'var(--ams-brand-primary-muted)';
+  el.style.color = 'var(--ams-brand-primary)';
+  el.style.borderColor = 'var(--ams-brand-primary)';
+}
+
+/* Preset selector */
+function selectPreset(el) {
+  document.querySelectorAll('.ams-preset-btn').forEach(function(btn) {
+    btn.style.background = 'var(--ams-bg-tertiary)';
+    btn.style.color = 'var(--ams-text-secondary)';
+    btn.style.borderColor = 'var(--ams-border-subtle)';
+  });
+  el.style.background = 'var(--ams-brand-primary-muted)';
+  el.style.color = 'var(--ams-brand-primary)';
+  el.style.borderColor = 'var(--ams-brand-primary)';
+}
+</script>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

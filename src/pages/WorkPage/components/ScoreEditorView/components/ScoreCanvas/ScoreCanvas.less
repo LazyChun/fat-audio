@@ -1,0 +1,223 @@
+.canvas {
+  flex: 1;
+  overflow: auto;
+  background: var(--ams-bg-primary);
+}
+
+.inner {
+  min-width: 900px;
+  padding: var(--ams-space-8) var(--ams-space-6);
+  position: relative;
+}
+
+.staffRow {
+  position: relative;
+  height: 48px;
+  margin-bottom: 24px;
+}
+
+.staffLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--ams-border-default);
+}
+
+.clef {
+  position: absolute;
+  left: 8px;
+  top: -8px;
+  font-size: 52px;
+  line-height: 1;
+  color: var(--ams-text-secondary);
+  font-family: serif;
+  user-select: none;
+}
+
+.timeSig {
+  position: absolute;
+  left: 52px;
+  top: 0;
+  font-family: var(--ams-font-body);
+  font-weight: var(--ams-weight-bold);
+  font-size: 20px;
+  line-height: 1;
+  color: var(--ams-text-secondary);
+  user-select: none;
+
+  > div {
+    line-height: 1.2;
+  }
+}
+
+.barLine {
+  position: absolute;
+  top: 4px;
+  width: 1px;
+  background: var(--ams-grid-measure);
+}
+
+.noteWrap {
+  position: absolute;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.eraserHover {
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cg transform='rotate(-32 10 10)'%3E%3Crect x='3' y='5' width='11' height='7' rx='1.5' fill='%23ff7575' stroke='%238b1a1a' stroke-width='1.2'/%3E%3Crect x='3' y='5' width='4' height='7' rx='1.5' fill='%23ffd0d0' stroke='%238b1a1a' stroke-width='1.2'/%3E%3Cline x1='7' y1='5' x2='7' y2='12' stroke='%238b1a1a' stroke-width='1'/%3E%3C/g%3E%3C/svg%3E")
+      4 15,
+    not-allowed;
+}
+
+.noteSelected {
+  outline: 2px solid var(--ams-brand-primary);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.noteHead {
+  width: 11px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  background: currentColor;
+}
+
+.stem {
+  position: absolute;
+  left: 9px;
+  top: -22px;
+  width: 1.5px;
+  height: 24px;
+}
+
+.flagLayer {
+  position: absolute;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.augDot {
+  position: absolute;
+  left: 15px;
+  top: 2px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+}
+
+.accidental {
+  position: absolute;
+  right: 12px;
+  top: -4px;
+  font-size: 12px;
+  line-height: 1;
+  user-select: none;
+}
+
+.noteName {
+  position: absolute;
+  left: -8px;
+  top: 12px;
+  font-size: 8px;
+  font-family: var(--ams-font-mono);
+  color: var(--ams-text-tertiary);
+  white-space: nowrap;
+}
+
+.cursor {
+  position: absolute;
+  top: -4px;
+  bottom: -20px;
+  width: 2px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.cursorDot {
+  position: absolute;
+  top: 0;
+  left: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ams-brand-primary);
+  box-shadow: 0 0 8px var(--ams-brand-primary-glow);
+}
+
+.cursorLine {
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: var(--ams-brand-primary);
+  box-shadow: 0 0 8px var(--ams-brand-primary-glow);
+}
+
+.hint {
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-tertiary);
+  text-align: center;
+  padding: var(--ams-space-4);
+}
+
+.canvas:focus {
+  outline: 2px solid var(--ams-brand-primary-muted);
+  outline-offset: -2px;
+}
+
+.ledgerLine {
+  position: absolute;
+  left: -8px;
+  width: 16px;
+  height: 1px;
+  background: var(--ams-border-default);
+}
+
+.rest {
+  font-family: serif;
+  font-size: 20px;
+  line-height: 1;
+  user-select: none;
+  transform: translateY(-4px);
+}
+
+.dragging {
+  cursor: grabbing !important;
+  opacity: 0.8;
+}
+
+.measureLabel {
+  position: absolute;
+  top: -14px;
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-tertiary);
+  font-family: var(--ams-font-mono);
+}
+
+.slurLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.dynamics {
+  position: absolute;
+  top: 14px;
+  left: -6px;
+  font-size: 9px;
+  font-family: serif;
+  font-weight: bold;
+  color: var(--ams-text-tertiary);
+}
+
+.keyboardHint {
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-tertiary);
+  text-align: center;
+  padding: 0 0 var(--ams-space-4);
+}

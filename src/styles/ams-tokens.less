@@ -1,0 +1,142 @@
+/* === AMS (AI Music Studio) Design Tokens ===
+ * Source: docs/design/主工作区.html :root block (lines 8-144)
+ * Global CSS variables only — no classes. Imported once in WorkPage.tsx.
+ * Prefix `--ams-` avoids collision with host tokens.
+ */
+:root {
+  /* === Brand Prefix: ams (AI Music Studio) — Light Theme === */
+
+  /* === Color System === */
+  --ams-bg-deep: #f5f5f8;
+  --ams-bg-primary: #ffffff;
+  --ams-bg-secondary: #f0f0f4;
+  --ams-bg-tertiary: #e8e8ee;
+  --ams-bg-elevated: #ffffff;
+  --ams-bg-hover: #ececf2;
+  --ams-bg-active: #e2e2ea;
+
+  --ams-border-subtle: rgba(0, 0, 0, 0.06);
+  --ams-border-default: rgba(0, 0, 0, 0.1);
+  --ams-border-strong: rgba(0, 0, 0, 0.16);
+  --ams-border-focus: rgba(99, 102, 241, 0.5);
+
+  --ams-text-primary: #1a1a2e;
+  --ams-text-secondary: #5a5a72;
+  --ams-text-tertiary: #9a9ab0;
+  --ams-text-inverse: #ffffff;
+
+  --ams-brand-primary: #6366f1;
+  --ams-brand-primary-hover: #4f46e5;
+  --ams-brand-primary-muted: rgba(99, 102, 241, 0.08);
+  --ams-brand-primary-glow: rgba(99, 102, 241, 0.12);
+
+  --ams-accent-warm: #d97706;
+  --ams-accent-warm-muted: rgba(217, 119, 6, 0.08);
+
+  --ams-accent-cyan: #0891b2;
+  --ams-accent-cyan-muted: rgba(8, 145, 178, 0.08);
+
+  --ams-accent-rose: #e11d48;
+  --ams-accent-rose-muted: rgba(225, 29, 72, 0.08);
+
+  --ams-accent-emerald: #059669;
+  --ams-accent-emerald-muted: rgba(5, 150, 105, 0.08);
+
+  /* Semantic State Colors */
+  --state-success: #059669;
+  --state-warning: #d97706;
+  --state-error: #dc2626;
+  --state-info: #6366f1;
+
+  /* Piano Roll / Grid Colors */
+  --ams-grid-line: rgba(0, 0, 0, 0.04);
+  --ams-grid-beat: rgba(0, 0, 0, 0.07);
+  --ams-grid-measure: rgba(0, 0, 0, 0.12);
+  --ams-note-c: #6366f1;
+  --ams-note-d: #818cf8;
+  --ams-note-e: #0891b2;
+  --ams-note-f: #059669;
+  --ams-note-g: #d97706;
+  --ams-note-a: #e11d48;
+  --ams-note-b: #7c3aed;
+
+  /* Track Colors */
+  --ams-track-piano: #6366f1;
+  --ams-track-drums: #d97706;
+  --ams-track-guitar: #059669;
+  --ams-track-bass: #0891b2;
+  --ams-track-violin: #e11d48;
+  --ams-track-synth: #7c3aed;
+  --ams-track-vocals: #db2777;
+  --ams-track-strings: #ea580c;
+  --ams-track-winds: #0d9488;
+  --ams-track-organ: #6d28d9;
+
+  /* === Typography === */
+  --ams-font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --ams-font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --ams-font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  --ams-text-xs: 0.6875rem;
+  --ams-text-sm: 0.75rem;
+  --ams-text-base: 0.8125rem;
+  --ams-text-md: 0.875rem;
+  --ams-text-lg: 1rem;
+  --ams-text-xl: 1.125rem;
+  --ams-text-2xl: 1.25rem;
+  --ams-text-3xl: 1.5rem;
+
+  --ams-leading-tight: 1.25;
+  --ams-leading-normal: 1.5;
+  --ams-leading-relaxed: 1.625;
+
+  --ams-weight-normal: 400;
+  --ams-weight-medium: 500;
+  --ams-weight-semibold: 600;
+  --ams-weight-bold: 700;
+
+  --ams-tracking-tight: -0.01em;
+  --ams-tracking-normal: 0;
+  --ams-tracking-wide: 0.02em;
+
+  /* === Radius === */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* === Spacing === */
+  --ams-space-1: 4px;
+  --ams-space-2: 8px;
+  --ams-space-3: 12px;
+  --ams-space-4: 16px;
+  --ams-space-5: 20px;
+  --ams-space-6: 24px;
+  --ams-space-8: 32px;
+  --ams-space-10: 40px;
+  --ams-space-12: 48px;
+
+  /* === Shadow / Surface === */
+  --ams-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --ams-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --ams-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.05);
+  --ams-shadow-xl: 0 8px 32px rgba(0, 0, 0, 0.05);
+  --ams-glow-primary: 0 0 12px rgba(99, 102, 241, 0.15);
+  --ams-glow-warm: 0 0 12px rgba(217, 119, 6, 0.15);
+
+  /* === Z-index layers === */
+  --ams-z-sidebar: 100;
+  --ams-z-panel: 200;
+  --ams-z-modal: 300;
+  --ams-z-popover: 400;
+  --ams-z-tooltip: 500;
+
+  /* === Transitions === */
+  --ams-transition-fast: 100ms ease;
+  --ams-transition-normal: 200ms ease;
+  --ams-transition-slow: 350ms ease;
+
+  /* === Light mode base === */
+  --ams-theme-mode: light;
+}

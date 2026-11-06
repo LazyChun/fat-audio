@@ -1,0 +1,123 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ams-space-5);
+  padding: var(--ams-space-5);
+  overflow-y: auto;
+  background: var(--ams-bg-secondary);
+  border-right: 1px solid var(--ams-border-subtle);
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ams-space-2);
+}
+
+.titleIcon {
+  color: var(--ams-accent-warm);
+}
+
+.title {
+  font-size: var(--ams-text-2xl);
+  font-weight: var(--ams-weight-bold);
+  color: var(--ams-text-primary);
+  margin: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ams-space-2);
+}
+
+.fieldLabel {
+  font-size: var(--ams-text-sm);
+  font-weight: var(--ams-weight-medium);
+  color: var(--ams-text-secondary);
+}
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  height: 26px;
+  padding: 0 var(--ams-space-3);
+  border: 1px solid var(--ams-border-default);
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--ams-text-secondary);
+  font-size: var(--ams-text-xs);
+  cursor: pointer;
+  transition: background var(--ams-transition-fast), color var(--ams-transition-fast), border-color var(--ams-transition-fast);
+}
+
+.chip:hover {
+  background: var(--ams-bg-hover);
+  color: var(--ams-text-primary);
+}
+
+.chipActive {
+  border-color: var(--ams-brand-primary);
+  background: var(--ams-brand-primary-muted);
+  color: var(--ams-brand-primary);
+  font-weight: var(--ams-weight-medium);
+}
+
+.paramGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ams-space-3);
+}
+
+.paramCell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.paramTitle {
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-tertiary);
+}
+
+.instRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ams-space-2) var(--ams-space-4);
+}
+
+.instCheckbox {
+  font-size: var(--ams-text-xs);
+  accent-color: var(--ams-brand-primary);
+}
+
+.generateBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ams-space-2);
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--ams-accent-warm);
+  color: var(--ams-text-inverse);
+  font-size: var(--ams-text-md);
+  font-weight: var(--ams-weight-semibold);
+  cursor: pointer;
+  transition: opacity var(--ams-transition-fast);
+  margin-top: var(--ams-space-2);
+}
+
+.generateBtn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.generateBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

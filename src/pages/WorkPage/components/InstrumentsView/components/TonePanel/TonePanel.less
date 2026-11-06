@@ -1,0 +1,217 @@
+.panel {
+  flex: 1;
+  padding: var(--ams-space-4) var(--ams-space-5);
+  overflow-y: auto;
+  background: var(--ams-bg-primary);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ams-space-3);
+}
+
+.sectionTitle {
+  font-family: var(--ams-font-mono);
+  font-size: var(--ams-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ams-text-tertiary);
+}
+
+.paramRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ams-space-2);
+  min-height: 26px;
+}
+
+.paramLabel {
+  min-width: 64px;
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-secondary);
+}
+
+.btnGroup {
+  display: flex;
+  gap: 2px;
+}
+
+.optBtn,
+.optBtnSm {
+  height: 26px;
+  padding: 0 8px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--ams-bg-tertiary);
+  color: var(--ams-text-secondary);
+  font-size: var(--ams-text-xs);
+  cursor: pointer;
+  transition: background var(--ams-transition-fast), color var(--ams-transition-fast);
+}
+
+.optBtnSm {
+  padding: 0 6px;
+  min-width: 28px;
+  font-family: var(--ams-font-mono);
+}
+
+.optBtn:hover,
+.optBtnSm:hover {
+  background: var(--ams-bg-hover);
+}
+
+.optActive {
+  background: var(--ams-brand-primary-muted);
+  color: var(--ams-brand-primary);
+  font-weight: var(--ams-weight-medium);
+}
+
+.sliderRow {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--ams-space-2);
+}
+
+.slider {
+  flex: 1;
+  height: 4px;
+  accent-color: var(--ams-brand-primary);
+  cursor: pointer;
+}
+
+.paramValue {
+  min-width: 48px;
+  text-align: right;
+  font-family: var(--ams-font-mono);
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-tertiary);
+}
+
+.pill {
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  background: var(--ams-bg-tertiary);
+  font-family: var(--ams-font-mono);
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-secondary);
+}
+
+.divider {
+  height: 1px;
+  background: var(--ams-border-default);
+  margin: var(--ams-space-4) 0;
+}
+
+.paramGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ams-space-2) var(--ams-space-5);
+}
+
+.toneParam {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.toneLabel {
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-tertiary);
+}
+
+.toneSlider {
+  width: 100%;
+  height: 3px;
+  accent-color: var(--ams-brand-primary);
+}
+
+.toneValue {
+  font-family: var(--ams-font-mono);
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-secondary);
+  text-align: right;
+}
+
+.presetGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.presetBtn {
+  height: 26px;
+  padding: 0 8px;
+  border: 1px solid var(--ams-border-default);
+  border-radius: var(--radius-sm);
+  background: var(--ams-bg-tertiary);
+  color: var(--ams-text-secondary);
+  font-size: var(--ams-text-xs);
+  cursor: pointer;
+  transition: background var(--ams-transition-fast), color var(--ams-transition-fast);
+}
+
+.presetBtn:hover {
+  background: var(--ams-bg-hover);
+  color: var(--ams-text-primary);
+}
+
+.savedPresets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: var(--ams-space-2);
+}
+
+.savePresetBtn {
+  width: 100%;
+  height: 28px;
+  margin-top: var(--ams-space-2);
+  border: 1px dashed var(--ams-border-default);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ams-text-secondary);
+  font-size: var(--ams-text-xs);
+  cursor: pointer;
+  transition: border-color var(--ams-transition-fast), color var(--ams-transition-fast);
+}
+
+.savePresetBtn:hover {
+  border-color: var(--ams-brand-primary);
+  color: var(--ams-brand-primary);
+}
+
+.actions {
+  display: flex;
+  gap: var(--ams-space-2);
+  margin-top: var(--ams-space-4);
+}
+
+.actionBtn {
+  flex: 1;
+  height: 32px;
+  border: 1px solid var(--ams-border-default);
+  border-radius: var(--radius-md);
+  background: var(--ams-bg-tertiary);
+  color: var(--ams-text-secondary);
+  font-size: var(--ams-text-sm);
+  cursor: pointer;
+  transition: background var(--ams-transition-fast), color var(--ams-transition-fast);
+}
+
+.actionBtn:hover {
+  background: var(--ams-bg-hover);
+  color: var(--ams-text-primary);
+}
+
+.primaryBtn {
+  background: var(--ams-brand-primary);
+  color: var(--ams-text-inverse);
+  border-color: var(--ams-brand-primary);
+}
+
+.primaryBtn:hover {
+  background: var(--ams-brand-primary-hover);
+  color: var(--ams-text-inverse);
+}

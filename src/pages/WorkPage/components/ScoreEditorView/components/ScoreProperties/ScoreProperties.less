@@ -1,0 +1,133 @@
+.panel {
+  display: flex;
+  align-items: center;
+  height: 120px;
+  padding: 0 var(--ams-space-6);
+  gap: var(--ams-space-8);
+  overflow-x: auto;
+  border-top: 1px solid var(--ams-border-default);
+  background: var(--ams-bg-secondary);
+  flex-shrink: 0;
+}
+
+.empty {
+  flex: 1;
+  text-align: center;
+  font-size: var(--ams-text-sm);
+  color: var(--ams-text-tertiary);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ams-space-2);
+  flex-shrink: 0;
+}
+
+.groupLabel {
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-tertiary);
+}
+
+.sep {
+  width: 1px;
+  height: 40px;
+  background: var(--ams-border-default);
+  flex-shrink: 0;
+}
+
+.pitchRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ams-space-2);
+}
+
+.arrowBtn {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--ams-border-default);
+  border-radius: var(--radius-sm);
+  background: var(--ams-bg-elevated);
+  color: var(--ams-text-secondary);
+  font-size: var(--ams-text-md);
+  cursor: pointer;
+  transition: background var(--ams-transition-fast), color var(--ams-transition-fast);
+}
+
+.arrowBtn:hover {
+  background: var(--ams-bg-hover);
+  color: var(--ams-text-primary);
+}
+
+.pitchPill {
+  min-width: 48px;
+  text-align: center;
+  font-family: var(--ams-font-mono);
+  font-size: var(--ams-text-sm);
+  color: var(--ams-brand-primary);
+  background: var(--ams-bg-tertiary);
+  border: 1px solid var(--ams-brand-primary-muted);
+  border-radius: var(--radius-sm);
+  padding: 2px 12px;
+}
+
+.velocityRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ams-space-2);
+}
+
+.velocityEnd {
+  font-family: var(--ams-font-mono);
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-tertiary);
+}
+
+.velocitySlider {
+  width: 120px;
+  height: 4px;
+  accent-color: var(--ams-brand-primary);
+  cursor: pointer;
+}
+
+.velocityValue {
+  min-width: 28px;
+  text-align: center;
+  font-family: var(--ams-font-mono);
+  font-size: var(--ams-text-xs);
+  color: var(--ams-brand-primary);
+  font-weight: var(--ams-weight-medium);
+}
+
+.tieGroup,
+.accGroup {
+  display: flex;
+  gap: 4px;
+}
+
+.tieBtn,
+.accBtn {
+  height: 26px;
+  padding: 0 10px;
+  border: 1px solid var(--ams-border-default);
+  border-radius: var(--radius-sm);
+  background: var(--ams-bg-elevated);
+  color: var(--ams-text-secondary);
+  font-size: var(--ams-text-xs);
+  cursor: pointer;
+  transition: background var(--ams-transition-fast), color var(--ams-transition-fast);
+}
+
+.tieBtn:hover,
+.accBtn:hover {
+  background: var(--ams-bg-hover);
+  color: var(--ams-text-primary);
+}
+
+.tieActive,
+.accActive {
+  background: var(--ams-brand-primary-muted);
+  color: var(--ams-brand-primary);
+  border-color: var(--ams-brand-primary);
+  font-weight: var(--ams-weight-medium);
+}

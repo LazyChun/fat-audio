@@ -1,0 +1,218 @@
+.card {
+  display: flex;
+  align-items: center;
+  gap: var(--ams-space-3);
+  padding: var(--ams-space-3) var(--ams-space-4);
+  background: var(--ams-bg-secondary);
+  border: 1px solid var(--ams-border-subtle);
+  border-radius: var(--radius-md);
+  transition: border-color var(--ams-transition-fast);
+}
+
+.card:hover {
+  border-color: var(--ams-border-default);
+}
+
+.cardPreview {
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--ams-space-2);
+  padding: var(--ams-space-4);
+  border-color: var(--ams-brand-primary-muted);
+  background: var(--ams-bg-elevated);
+}
+
+.playBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--ams-brand-primary-muted);
+  color: var(--ams-brand-primary);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background var(--ams-transition-fast);
+}
+
+.playBtn:hover {
+  background: var(--ams-brand-primary-glow);
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ams-space-2);
+}
+
+.clipTitle {
+  font-size: var(--ams-text-sm);
+  font-weight: var(--ams-weight-medium);
+  color: var(--ams-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+
+.clipDuration {
+  font-family: var(--ams-font-mono);
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-tertiary);
+  flex-shrink: 0;
+}
+
+.miniWave {
+  display: flex;
+  align-items: end;
+  gap: 1px;
+  height: 16px;
+  margin-top: 2px;
+}
+
+.miniBar {
+  width: 2px;
+  border-radius: 1px;
+}
+
+.actions {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ams-text-tertiary);
+  cursor: pointer;
+  transition: background var(--ams-transition-fast), color var(--ams-transition-fast);
+}
+
+.actionBtn:hover {
+  background: var(--ams-bg-hover);
+  color: var(--ams-text-primary);
+}
+
+.deleteBtn:hover {
+  color: var(--ams-accent-rose);
+}
+
+.previewHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--ams-space-3);
+}
+
+.previewLabel {
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-tertiary);
+}
+
+.previewTime {
+  margin-left: auto;
+  font-family: var(--ams-font-mono);
+  font-size: var(--ams-text-xs);
+  color: var(--ams-text-tertiary);
+}
+
+.progressTrack {
+  width: 100%;
+  height: 3px;
+  background: var(--ams-bg-tertiary);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--ams-accent-warm);
+  transition: width 100ms linear;
+}
+
+.bigWave {
+  display: flex;
+  align-items: end;
+  gap: 1px;
+  height: 60px;
+  width: 100%;
+  position: relative;
+  padding: 4px 0;
+}
+
+.bigBar {
+  flex: 1;
+  border-radius: 1px;
+  transition: background var(--ams-transition-fast);
+}
+
+.progressLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--ams-accent-warm);
+  pointer-events: none;
+}
+
+.previewControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ams-space-3);
+  margin-top: var(--ams-space-2);
+}
+
+.previewNavBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--ams-border-default);
+  border-radius: var(--radius-sm);
+  background: var(--ams-bg-elevated);
+  color: var(--ams-text-secondary);
+  cursor: pointer;
+  transition: background var(--ams-transition-fast);
+}
+
+.previewNavBtn:hover {
+  background: var(--ams-bg-hover);
+  color: var(--ams-text-primary);
+}
+
+.previewPlayBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: var(--radius-full);
+  background: var(--ams-accent-warm);
+  color: var(--ams-text-inverse);
+  cursor: pointer;
+  transition: opacity var(--ams-transition-fast);
+}
+
+.previewPlayBtn:hover {
+  opacity: 0.9;
+}
